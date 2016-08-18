@@ -1,0 +1,58 @@
+//style standardization
+a{
+	text-decoration: none;
+	color:blue	;
+}
+
+//layout for top bar on every page
+#topBar{
+	width:100%;
+	height:180px;
+	background: red;
+	margin-bottom: 10px;
+}
+
+//Navigation bar for parent's side
+// #mainNav{
+// 	width:98%;
+// 	height:5%;
+// 	background: rgb(38,64,91);
+// 	display: flex;
+// 	flex-direction: row;
+// 	justify-content:space-between;
+// 	border-radius: 5px;
+// 	margin: auto;
+// 	padding:3px 5px 3px 5px;
+// 	margin-bottom: 60px;
+// }
+
+//Parent's page after logging in
+#landingPage{
+	width:100%;
+	display:flex;
+	flex-direction:row;
+	justify-content:space-between;
+	height:75%;
+
+	h1{
+		text-align: center;
+	}
+
+	.landingBox{
+	border:1px solid black;
+	height:425px;
+	width:33%;
+	}
+}
+
+
+.deny{
+	width:23px;
+	background-color: red;
+}
+
+
+
+
+
+
