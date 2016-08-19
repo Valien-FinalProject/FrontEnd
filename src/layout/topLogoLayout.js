@@ -7,7 +7,6 @@ const topBar =  React.createClass({
     return (
       <div>
       	<div id="topBar">
-      	<Link to="/landing"> Something Might go Here eventually </Link>
         <p> {this.props.parent.username}</p>
       	</div>
       	{this.props.children}

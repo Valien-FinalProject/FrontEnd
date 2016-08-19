@@ -29,12 +29,14 @@ export default class DateSelector extends React.Component {
   }
 
   handleChangeMinDate = (event, date) => {
+    this.props.getMinDate(date)
     this.setState({
       minDate: date,
     });
   };
 
   handleChangeMaxDate = (event, date) => {
+    this.props.getMaxDate(date)
     this.setState({
       maxDate: date,
     });
@@ -52,23 +54,25 @@ export default class DateSelector extends React.Component {
         <div style={optionsStyle}>
           <div style={{borderBottom:"1px solid green", marginBottom:10}}>
             <DatePicker
+              name="startDate"
               onChange={this.handleChangeMinDate}
               autoOk={this.state.autoOk}
               floatingLabelText="Start Date"
               defaultDate={this.state.minDate}
               disableYearSelection={this.state.disableYearSelection}
             />
-            <TimePickerStart />
+            {/*<TimePickerStart />*/}
           </div>  
           <div style={{borderBottom:"1px solid red", marginBottom:10}}>
             <DatePicker
+              name="endDate"
               onChange={this.handleChangeMaxDate}
               autoOk={this.state.autoOk}
               floatingLabelText="End Date"
               defaultDate={this.state.maxDate}
               disableYearSelection={this.state.disableYearSelection}
             />
-            <TimePickerEnd />
+            {/*<TimePickerEnd />*/}
           </div>
            
         </div>

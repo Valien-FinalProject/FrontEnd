@@ -1,5 +1,6 @@
 import React from 'react';
-
+import {getAllChores} from 'api/api'
+import {connect} from 'react-redux'
 
 const style= {
 	width:"25%",
@@ -7,7 +8,11 @@ const style= {
 	marginLeft:"5%"
 }
 export default React.createClass({
+  componentWillMount:function(){
+    getAllChores()
+  },
   render: function () {
+    console.log(this.props.chores)
     return (
       <div style={style}>
       	<h1> Pick a chore from the Pool </h1>
@@ -21,3 +26,9 @@ export default React.createClass({
     )
   }
 })	
+
+const stateToProps = function(state){
+  return {
+    chores:state.parentReducer.chores
+  }
+}

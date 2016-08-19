@@ -13,6 +13,7 @@ export default class TimePickerStart extends React.Component {
   };
 
   render() {
+    console.log(this.state.value12)
     return (
       <div>
         <TimePicker

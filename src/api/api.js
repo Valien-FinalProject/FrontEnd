@@ -145,8 +145,28 @@ export function createChild(phone, email, name, pw, username){
 		console.dir(err)
 	})
 }
-export function createChore(chore, description, endDate, startDate, value ){
-	api.post('parent/chore', {chore:chore, description:description, endDate})
+export function getAllChores(){
+	api.get('/parent/chores').then(function(response){
+		console.log(response)
+		store.dispatch({
+			type:"GET_ALL_CHORES",
+			chores:response.data
+		})
+	}).catch(function(err){
+		console.dir(err)
+	})
+}
+export function createChore(description, endDate, name,  startDate, value ){
+	api.post('parent/chore', {description:description, endDate:endDate, name:name, startDate:startDate, value:value})
+	.then(function(response){
+		console.log(response)
+		store.dispatch({
+			type:"ADD_CHORE_POOL",
+			chore:response.data
+		})
+	}).catch(function(err){
+		console.dir(err)
+	})
 }
 
 
