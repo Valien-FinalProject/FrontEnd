@@ -1,7 +1,9 @@
 const childInitialState ={
 	child:[],
 	wishes:[],
-	pending:[]
+	pending:[],
+	value:[],
+	current:[]
 }
 
 export default function (state=childInitialState, action){
@@ -18,6 +20,14 @@ export default function (state=childInitialState, action){
 			})}
 		case "MAKE_CHORE_PENDING":
 			return{...state, pending:action.chore}
+		case "TOGGLE_LANDING":
+			return{...state, value:action.value}
+		case "GET_CURRENT_CHORES":
+			return{...state, current:action.current}
+		case "GET_PENDING_CHORES":
+			return{...state, pending:action.pending}
+		case "POST_TO_INCOMPLETE":
+			return{...state, current:[...state.current, action.current]}
 		default:
 			return state
 	}

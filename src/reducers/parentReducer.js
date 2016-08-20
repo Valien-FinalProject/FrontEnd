@@ -2,7 +2,8 @@ const parentInitialState ={
 	parent:[],
 	children:[],
 	chores:[],
-	poolchores:[]
+	poolchores:[],
+	complete:[]
 }
 
 
@@ -24,6 +25,10 @@ export default function (state = parentInitialState, action){
 			return{...state, chores:action.chores}
 		case "ADD_CHORE_POOL":
 			return{...state, chores:[...state.chores, action.chore]}
+		case "MARK_CHORE_COMPLETE":
+			return{...state, complete:action.chore}
+		case "GET_COMPLETE_CHORES":
+			return{...state, complete:action.complete}
 		default:
 			return state;
 	}

@@ -15,7 +15,7 @@ const Rewards = React.createClass({
       	<h1> Rewards Available </h1>
       	<ul> 
       		{this.props.rewards.map(function(reward){
-            return <TestRewards key={reward.id} name={reward.description}/>
+            return <TestRewards key={reward.id} value={reward.points} name={reward.description}/>
           })}
       		
       	</ul>

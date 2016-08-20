@@ -183,6 +183,70 @@ export function getPoolChores(){
 	})
 }
 
+export function getCurrentChoresById(id){
+	api.get(`/parent/child/${id}/current`).then(function(response){
+		console.log("getCurrentChoresById", response)
+		store.dispatch({
+			type:"GET_CURRENT_CHORES",
+			current:response.data
+
+		})
+	}).catch(function(err){
+		console.dir(err)
+	})
+}
+
+export function getPendingChoresById(id){
+	api.get(`/parent/child/${id}/pending`).then(function(response){
+		console.log("getPendingChoresById", response)
+		store.dispatch({
+			type:"GET_PENDING_CHORES",
+			pending:response.data
+		})
+	}).catch(function(err){
+		console.dir(err)
+	})
+}
+
+export function getCompleteChoresById(id){
+	api.get(`/parent/child/${id}/complete`).then(function(response){
+		console.log("getCompleteChoresById", response)
+		store.dispatch({
+			type:"GET_COMPLETE_CHORES",
+			complete:response.data
+		})
+	}).catch(function(err){
+		console.dir(err)
+	})
+}
+
+export function postToComplete(childId, choreId){
+	api.post(`/parent/child/${childId}/approve/${choreId}`).then(function(response){
+		console.log("postToComplete", response)
+		store.dispatch({
+			type:"POST_TO_COMPLETE",
+			complete:response.data
+		})
+	}).catch(function(err){
+		console.dir(err)
+	})
+}
+export function postToIncomplete(choreId){
+	api.post(`/parent/chore/${choreId}/deny`).then(function(response){
+		store.dispatch({
+			type:"POST_TO_INCOMPLETE",
+			current:response.data
+		})
+	})
+}
+export function handleValue(value){
+	store.dispatch({
+		type:"TOGGLE_LANDING",
+		value
+	})
+}
+
+
 export function makeChorePending(id){
 	api.put(`/child/chore/${id}/pending`).then(function(response){
 		console.log(response)
@@ -194,6 +258,18 @@ export function makeChorePending(id){
 		console.dir(err)
 	})
 }
+
+export function markChoreComplete(childId, choreId){
+	api.post(`/parent/child/${childId}/approve/${choreId}`).then(function(response){
+		console.log(response)
+		store.dispatch({
+			type:"MARK_CHORE_COMPLETE",
+			chore:response.data
+		})
+	})
+
+}
+
 export function createChore(description, endDate, name,  startDate, value ){
 	api.post('/parent/chore', {description:description, endDate:endDate, name:name, startDate:startDate, value:value})
 	.then(function(response){
