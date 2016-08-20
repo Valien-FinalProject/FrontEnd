@@ -1,6 +1,7 @@
 const childInitialState ={
 	child:[],
-	wishes:[]
+	wishes:[],
+	pending:[]
 }
 
 export default function (state=childInitialState, action){
@@ -15,6 +16,8 @@ export default function (state=childInitialState, action){
 			return{...state, wishes:state.wishes.filter(function(item){
 				return item.id !== action.id
 			})}
+		case "MAKE_CHORE_PENDING":
+			return{...state, pending:action.chore}
 		default:
 			return state
 	}

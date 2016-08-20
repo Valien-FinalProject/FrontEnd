@@ -27,6 +27,8 @@ export function childLogin(username, password){
 			type:"CHILD_LOGIN",
 			child:response.data
 		})
+		localStorage.setItem("childId", response.data.id)
+		localStorage.setItem("childUN", response.data.username)
 	}).catch(function(err){
 		console.dir(err)
 	})
@@ -122,12 +124,14 @@ export function cookieGetter(){
 export function login(username, password){
 	api.login(username, password).then(function(response){
 		console.log("login", response)
-		browserHistory.push("/landing");
+		
 		store.dispatch({
 			type:"ADD_PARENT",
 			parent:response.data
 		})
-
+		localStorage.setItem("parentUN", response.data.username)
+		localStorage.setItem("parentId", response.data.id)
+		browserHistory.push("/landing");
 	}).catch(function(err){
 		console.dir(err)
 	})
@@ -156,12 +160,59 @@ export function getAllChores(){
 		console.dir(err)
 	})
 }
+export function getChoreByChildId(id){
+	api.get(`/parent/child/${id}/chores`).then(function(response){
+		console.log(response)
+		store.dispatch({
+			type:"GET_CHILD_CHORES",
+			chores: response.data
+		})
+	}).catch(function(err){
+		console.dir(err)
+	})
+
+}
+export function getPoolChores(){
+	api.get('/parent/chores/pool').then(function(response){
+		store.dispatch({
+			type:"GET_POOL_CHORES",
+			pool:response.data
+		})
+	}).catch(function(err){
+		console.dir(err)
+	})
+}
+
+export function makeChorePending(id){
+	api.put(`/child/chore/${id}/pending`).then(function(response){
+		console.log(response)
+		store.dispatch({
+			type:"MAKE_CHORE_PENDING",
+			chore:response.data
+		})
+	}).catch(function(err){
+		console.dir(err)
+	})
+}
 export function createChore(description, endDate, name,  startDate, value ){
-	api.post('parent/chore', {description:description, endDate:endDate, name:name, startDate:startDate, value:value})
+	api.post('/parent/chore', {description:description, endDate:endDate, name:name, startDate:startDate, value:value})
 	.then(function(response){
 		console.log(response)
 		store.dispatch({
 			type:"ADD_CHORE_POOL",
+			chore:response.data
+		})
+	}).catch(function(err){
+		console.dir(err)
+	})
+}
+
+export function assignChore(id, description, endDate, name,  startDate, value){
+	api.post(`/parent/child/${id}/chore`, {description:description, endDate:endDate, name:name, startDate:startDate, value:value})
+	.then(function(response){
+		console.log("assignChore to Child", response)
+		store.dispatch({
+			type:"ADD_CHILD_CHORE",
 			chore:response.data
 		})
 	}).catch(function(err){

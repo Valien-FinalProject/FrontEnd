@@ -1,5 +1,5 @@
 import React from 'react';
-import {getAllChores} from 'api/api'
+import {getPoolChores} from 'api/api'
 import {connect} from 'react-redux'
 
 const style= {
@@ -7,9 +7,12 @@ const style= {
 	border:"1px solid black",
 	marginLeft:"5%"
 }
-export default React.createClass({
+const PoolChores =  React.createClass({
   componentWillMount:function(){
-    getAllChores()
+    getPoolChores()
+  },
+  handleSubmit:function(){
+
   },
   render: function () {
     console.log(this.props.chores)
@@ -17,8 +20,9 @@ export default React.createClass({
       <div style={style}>
       	<h1> Pick a chore from the Pool </h1>
       		<ul>
-      			<li> Pool task <button>Accept Chore</button></li>
-
+      			{this.props.chores.map(function(chore){
+              return <li key={chore.id}>name:{chore.name} Description: {chore.description} Points: {chore.points}  <button type="submit" onTouchTap={this.handleSubmit}>Accept Chore</button></li>
+            }.bind(this))}
       		</ul>
 
 
@@ -29,6 +33,8 @@ export default React.createClass({
 
 const stateToProps = function(state){
   return {
-    chores:state.parentReducer.chores
+    chores:state.parentReducer.poolchores
   }
 }
+
+export default connect(stateToProps)(PoolChores)

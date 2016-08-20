@@ -20,13 +20,13 @@ const Children =  React.createClass({
   componentWillMount:function(){
     getChildren()
   },
-  handleCheck:function(name, isChecked){
-    console.log(name)
+  handleCheck:function(name, isChecked, id){
     var newObj ={}
-    newObj[name] = isChecked;
+    // newObj[name[0]]  = isChecked;
+    newObj[name[1]] = isChecked
     var newdState =  {children:Object.assign(this.state.children, newObj)}
     this.setState(newdState);
-    console.log(this.state.children)
+    this.props.getChildrenId(this.state.children)
     
   },
   render: function () {
@@ -36,7 +36,7 @@ const Children =  React.createClass({
       	<p>Assign to Child(ren):</p>
       	<div style={radioStyle}>
           {this.props.children.map(function(item, i){
-            return <Checkbox key={item.id} id={item.id} value={item.name} label={item.name} onCheck={(e, isChecked) => this.handleCheck(item.name, isChecked)} />
+            return <Checkbox key={item.id} id={item.id} value={item.name} label={item.name} onCheck={(e, isChecked, id) => this.handleCheck([item.name,item.id], isChecked, item.id)} />
           }.bind(this))}
           <Checkbox value="pool" label="Pool" />
         </div>

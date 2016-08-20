@@ -41,6 +41,7 @@ export default React.createClass({
 	var newState = {days: Object.assign(this.state.days, newObj)}
 	console.log(newState)
 	this.setState(newState);
+	this.props.getFrequency(this.state.days)
   },
   render: function () {
     return (
