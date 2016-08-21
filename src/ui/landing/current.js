@@ -3,10 +3,16 @@ import {getCurrentChoresById} from 'api/api'
 import {connect} from 'react-redux'
 
 const CurrentChores =  React.createClass({
-  componentWillMount:function(){
-    getCurrentChoresById(this.props.value)
+  componentDidMount:function(){
+     setTimeout(function(){ getCurrentChoresById(2) }.bind(this), 0);
+
+
   },
   render: function () {
+    if(typeof this.props.value === 'undefined'){
+      return (<div>hello</div>)
+    }else{
+    
     return (
       <div>
       	<h1>CHORES STILL TO DO</h1>
@@ -18,6 +24,7 @@ const CurrentChores =  React.createClass({
       </div>
     )
   }
+  } 
 })
 
 

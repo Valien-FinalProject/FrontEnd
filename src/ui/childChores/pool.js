@@ -21,7 +21,7 @@ const PoolChores =  React.createClass({
       	<h1> Pick a chore from the Pool </h1>
       		<ul>
       			{this.props.chores.map(function(chore){
-              return <li key={chore.id}>name:{chore.name} Description: {chore.description} Points: {chore.points}  <button type="submit" onTouchTap={this.handleSubmit}>Accept Chore</button></li>
+              return <li key={chore.id}>name:{chore.name} Description: {chore.description} Points: {chore.value}  <button type="submit" onTouchTap={this.handleSubmit}>Accept Chore</button></li>
             }.bind(this))}
       		</ul>
 

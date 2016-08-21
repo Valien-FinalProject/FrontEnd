@@ -250,6 +250,7 @@ export function handleValue(value){
 export function makeChorePending(id){
 	api.put(`/child/chore/${id}/pending`).then(function(response){
 		console.log(response)
+		console.log(id)
 		store.dispatch({
 			type:"MAKE_CHORE_PENDING",
 			chore:response.data

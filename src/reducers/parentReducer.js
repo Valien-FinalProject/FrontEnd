@@ -29,6 +29,8 @@ export default function (state = parentInitialState, action){
 			return{...state, complete:action.chore}
 		case "GET_COMPLETE_CHORES":
 			return{...state, complete:action.complete}
+		case "POST_TO_COMPLETE":
+			return{...state, complete:[...state.complete, action.complete]}
 		default:
 			return state;
 	}

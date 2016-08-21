@@ -1,10 +1,11 @@
 import React from 'react';
 import FlatButton from 'material-ui/FlatButton'
-import {getPendingChoresbyId, postToComplete, postToIncomplete} from 'api/api'
+import {connect} from 'react-redux'
+import {getPendingChoresById, postToComplete, postToIncomplete} from 'api/api'
 
 const PendingChores =  React.createClass({
   componentWillMount:function(){
-    getPendingChoresbyId(this.props.value)
+    
   },
   handleComplete:function(chore){
     postToComplete(this.props.value, chore )
@@ -14,6 +15,10 @@ const PendingChores =  React.createClass({
 
   },
   render: function () {
+    if(typeof this.props.value === 'undefined'){
+      return(<div>hello</div>)
+    }else{
+      // getPendingChoresById(this.props.value)
     return (
       <div>
       	<h1>PENDING CHORES</h1>
@@ -24,6 +29,7 @@ const PendingChores =  React.createClass({
       		</ol>
       </div>
     )
+  }
   }
 })
 
