@@ -1,17 +1,17 @@
 import React from 'react';
-import {getParentCurrentChoresById, postToComplete} from 'api/api'
+import {getCurrentChoresById, postToComplete} from 'api/api'
 import {connect} from 'react-redux'
-import FlatButton from 'material-ui/FlatButton'
 
-
-
+const divStyle={
+  backgroundColor:"rgba(0,145,0,.5)"
+}
 const CurrentChores =  React.createClass({
   componentWillMount:function(){
-    getParentCurrentChoresById(53)
+    getCurrentChoresById()
 
   },
   completeChore:function(choreId){
-    postToComplete(2,choreId )
+    postToComplete(localStorage.getItem("childId"),choreId )
   },
   render: function () {
     if(typeof this.props.value === 'undefined'){
@@ -21,11 +21,11 @@ const CurrentChores =  React.createClass({
 
       <div>
       	<h1>CHORES STILL TO DO</h1>
-      		<ul className="currentLanding">
+      		<ol>
             {this.props.current.map(function(chore){
-              return <li key={chore.id} title={chore.description}>{chore.name} <FlatButton backgroundColor="white" hoverColor="rgba(0,145,0,.5)" type="submit" label="Complete Chore" onTouchTap={(e) =>this.completeChore(chore.id)}/></li>
+              return <li key={chore.id}>{chore.description} <button type="submit" onTouchTap={(e) =>this.completeChore(chore.id)}>Move to Complete Test</button></li>
             }.bind(this))}
-          </ul>
+          </ol>
       </div>
     )
   }

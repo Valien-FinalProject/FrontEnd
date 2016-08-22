@@ -25,6 +25,7 @@ export default React.createClass({
   render: function () {
     return (
       <div style={style}>
+        
         <CurrentRewards />
         <Wishlist />
       </div>

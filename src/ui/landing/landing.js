@@ -7,24 +7,32 @@ import {RadioButtonGroup, RadioButton} from 'material-ui/RadioButton'
 import RaisedButton from 'material-ui/RaisedButton'
 import {connect} from 'react-redux'
 import {getChildren, handleValue} from 'api/api'
+import Cookie from 'js-cookie'
 
-const style={
-  backgroundColor:"#EEEEE0"
+const div3 ={
+  backgroundColor:"rgba(0,145,0,.5)",
+  overflow:"auto"
 }
 
+const div2 ={
+  backgroundColor:"rgba(255,255,0,.5)",
+  overflow:"auto"
+
+}
+const div1 ={
+  backgroundColor:"rgba(255,0,0,.5)",
+  overflow:"auto"
+
+}
 const radioStyle={
   display:"flex",
   flexDirection:"row",
   width:220,
-  marginLeft:"40%"
+  textAlign:"center"
 }
 const parentLanding =  React.createClass({
-  getInitalState:function(){
-    return {
-      selected:""
-    }
-  },
   componentWillMount:function(){
+    console.log(Cookie.get())
     getChildren()
   },
   handleClick:function(){
@@ -34,6 +42,7 @@ const parentLanding =  React.createClass({
     handleValue(value)
     console.log(value)
   },
+
   render: function () {
     if(this.props.children.length ===0 ){
       return(<div>Hello</div>)
@@ -49,13 +58,13 @@ const parentLanding =  React.createClass({
           </RadioButtonGroup>
         </div>
       <div id="landingPage">
-      	<div style={style} className="landingBox">
+      	<div style={div1} className="landingBox">
       		<Current />
       	</div>
-      	<div style={style}className="landingBox">
+      	<div style={div2}className="landingBox">
       		<Pending />
       	</div>
-      	<div style={style}className="landingBox">
+      	<div style={div3}className="landingBox">
       		<Complete />
       	</div>
         <button onClick={this.handleClick}> Cookie Test</button>

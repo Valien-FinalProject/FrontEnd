@@ -1,9 +1,8 @@
 const childInitialState ={
 	child:[],
 	wishes:[],
-	pending:[],
 	value:[],
-	current:[]
+	points:0
 }
 
 export default function (state=childInitialState, action){
@@ -18,16 +17,15 @@ export default function (state=childInitialState, action){
 			return{...state, wishes:state.wishes.filter(function(item){
 				return item.id !== action.id
 			})}
-		case "MAKE_CHORE_PENDING":
-			return{...state, pending:action.chore}
 		case "TOGGLE_LANDING":
 			return{...state, value:action.value}
-		case "GET_CURRENT_CHORES":
-			return{...state, current:action.current}
-		case "GET_PENDING_CHORES":
-			return{...state, pending:action.pending}
-		case "POST_TO_INCOMPLETE":
-			return{...state, current:[...state.current, action.current]}
+		case "GET_POINTS":
+			return{...state, points:action.points}
+		case "ADD_POINTS":
+			return{...state, points:state.points + action.points}
+		case "REMOVE_POINTS":
+			return{...state, points:state.points - action.points}
+		
 		default:
 			return state
 	}

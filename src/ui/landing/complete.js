@@ -1,10 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import {getCompleteChoresById} from 'api/api'
+import {getParentCompleteChoresById, deleteChore} from 'api/api'
 
 const CompleteChores = React.createClass({
   componentWillMount:function(){
-    getCompleteChoresById(2)
+    getParentCompleteChoresById(53)
+  },
+  deleteMe:function(choreId){
+    deleteChore(choreId)
   },
   render: function () {
     return (
@@ -12,8 +15,9 @@ const CompleteChores = React.createClass({
       	<h1>COMPLETED CHORES</h1>
       		<ol>
       			{this.props.complete.map(function(chore){
-              <li key={chore.id}>{chore.name} </li>
-            })}
+              {console.log(chore.id)}
+              return <li style={{marginBottom:10}} key={chore.id}>{chore.name} <button onTouchTap={(e) => this.deleteMe(chore.id)} style={{float:"right"}} title="remove chore">X</button></li>
+            }.bind(this))}
       		</ol>
       </div>
     )
@@ -22,7 +26,7 @@ const CompleteChores = React.createClass({
 
 const stateToProps = function(state){
   return{
-    complete:state.parentReducer.complete,
+    complete:state.choreReducer.complete,
     value:state.childReducer.value
   }
 }

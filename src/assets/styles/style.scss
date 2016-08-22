@@ -3,7 +3,13 @@ a{
 	text-decoration: none;
 	color:blue	;
 }
-
+body{
+	font-family: "Roboto", sans-serif
+}
+ul{
+	list-style:none;
+	padding-left: 0
+}
 //layout for top bar on every page
 #topBar{
 	width:100%;
@@ -56,7 +62,18 @@ a{
 	background-image: url('http://www.publicdomainpictures.net/pictures/120000/nahled/diverse-kids.jpg');
 }
 
+.currentLanding{
+	list-style: none;
+}
 
 
+
+//ORIGINALLY in Child REWARDS
+// <ul style={{paddingLeft:0}}> 
+//          {this.props.rewards.map(function(reward){
+//             return <li key={reward.id}><span style={{marginRight:10}}>Description: {reward.description}</span> <span style={{marginRight:10}}>Points:{reward.points}</span><RaisedButton style={{marginRight:0}} onTouchTap={(e) =>this.cashIn(reward.points)} label="Cash In" /></li>
+//           }.bind(this))}
+          
+//         </ul>
 
 

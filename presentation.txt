@@ -1,0 +1,62 @@
+Introduction:  
+	Present Problem,
+	Present Solution through our product.
+
+Show work:
+	Front end web,
+	Android.
+
+
+Problem: Children/people in general struggle to find motivation.
+Lack of incentive exacerbates the problem.
+
+Our product allows easy viewing/access to incentives and therefore mitigates potential motivation problems.
+
+
+Where are we at?  Python room:
+
+Missing Parts, Front-end:  
+Calendar, 
+Frequency,
+Graphs,
+Styling.
+Value change on Toggle
+Need to send screenshots to Val
+
+
+Missing Parts, Back-end:
+EndPoints/Object Properties: Progress Log, Frequency
+Tests,
+Walmart (maybe not missing?)
+
+FacialRecog (optional/not expected?)
+(Sendgrid/Twilio are up)
+
+Android: 
+Login/create parent/reward/child/
+viewing rewards
+parent landing done
+Toggle between children
+
+
+TODO:
+Hit more endpoints,
+Styling needs fixing
+Needs Nigel/Eddy on Android
+Fix Navagation routing/connections
+
+
+
+
+
+
+General Todos:
+Implement Date fixes, needs to update based on time
+Add Profile picture???
+
+
+
+
+
+
+

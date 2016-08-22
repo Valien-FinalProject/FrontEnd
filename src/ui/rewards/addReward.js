@@ -30,8 +30,8 @@ export default React.createClass({
    	<div>
       <h1>Create Reward</h1>
       <form onSubmit={this.handleSubmit}>
-      	<TextField onChange={this.handleChange} name="reward" type="text" hintText="Reward Description" />
-      	<TextField onChange={this.handleChange} name="points" type="number" hintText="Assign Points" />
+      	<TextField onChange={this.handleChange} floatingLabelText="Reward Description" name="reward" type="text" hintText="Reward Description" />
+      	<TextField onChange={this.handleChange} floatingLabelText="Assign Points" name="points" type="number" hintText="Assign Points" />
         <RaisedButton type="submit" label="Add Reward" />
       </form>
     </div>

@@ -3,18 +3,21 @@ import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import RaisedButton from 'material-ui/RaisedButton'
 import {connect} from 'react-redux'
 import {getChildren} from 'api/api'
-
+import TextField from 'material-ui/TextField'
 
 
 const style={
 	display:"inline-block",
 	width:"50%",
-	margin:"auto"
+	margin:"auto",
+  textAlign:"center"
 }
 const radioStyle={
 	display:"flex",
 	flexDirection:"row",
-	width:120
+	width:120,
+  margin:"auto",
+  borderBottom:30
 }
 
 const button={
@@ -24,6 +27,18 @@ const button={
 const Wishlist = React.createClass({
   componentWillMount:function(){
     getChildren()
+  },
+  handleAssign:function(){
+
+  },
+  handleDeny:function(){
+
+  },
+  handleChange:function(e){
+    var newState = Object.assign({}, this.state)
+    newState[e.target.name] = e.target.value
+    this.setState(newState)
+
   },
   render: function () {
     
@@ -38,10 +53,15 @@ const Wishlist = React.createClass({
           })}
       	</RadioButtonGroup>
 
-      	<ul>
-      		<li><span style={{marginRight:20}}>Wishlist item </span> <RaisedButton backgroundColor="rgba(0,128,0,.4)" name="approve" label="approve"/><RaisedButton className="deny" backgroundColor="rgba(255,0,0,.4)" name="deny" label="deny" /></li>
+      	
+      		<p style={{marginRight:20}}>Wishlist item </p> 
+         
+          <TextField type="number" name="points" onChange={this.handleChange} hintText="Assign Points" />
+          <RaisedButton onTouchTap={this.handleAssign} type="submit" backgroundColor="rgba(0,128,0,.4)" name="approve" label="approve"/>
+          <RaisedButton onTouchTap={this.handleDeny} className="deny" type="submit" backgroundColor="rgba(255,0,0,.4)" name="deny" label="deny" />
+          
 
-      	</ul>
+      	
       </div>
     )
     

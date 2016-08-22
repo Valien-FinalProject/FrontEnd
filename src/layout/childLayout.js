@@ -19,10 +19,12 @@ export default class ToolbarExamplesSimple extends React.Component {
     super(props);
     this.state = {
       value: 1,
+      value2: 1
     };
   }
 
   handleChange = (event, index, value) => this.setState({value});
+  handleChange2 = (event, index, value) => this.setState({value2});
   logoutChild(){
     logout()
 
@@ -45,6 +47,7 @@ export default class ToolbarExamplesSimple extends React.Component {
           </DropDownMenu>
         </ToolbarGroup>
         <ToolbarGroup>
+         <ToolbarTitle text={"username: " + localStorage.getItem("childUN")} />
           <IconMenu
             iconButtonElement={
               <IconButton touch={true}>
@@ -52,9 +55,9 @@ export default class ToolbarExamplesSimple extends React.Component {
               </IconButton>
             }
           >
-            <MenuItem containerElement={<Link to="/settings" />} primaryText="Settings" />
-            <MenuItem onTouchTap={this.checkCookie} primaryText="Cookie Checker" />
-            <MenuItem onTouchTap={this.logoutChild} primaryText="Logout" />
+            <MenuItem  containerElement={<Link to="/childProfile" />} primaryText="Settings" />
+            <MenuItem  onTouchTap={this.checkCookie} primaryText="Cookie Checker" />
+            <MenuItem  onTouchTap={this.logoutChild} primaryText="Logout" />
           </IconMenu>
         </ToolbarGroup>
       </Toolbar>

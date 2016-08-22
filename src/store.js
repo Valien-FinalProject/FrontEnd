@@ -7,12 +7,14 @@ var createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
 import parentReducer from 'reducers/parentReducer'
 import rewardReducer from 'reducers/rewardReducer'
 import childReducer from 'reducers/childReducer'
+import choreReducer from 'reducers/choreReducer'
 
 // combine reducers
 const reducers = combineReducers({
   parentReducer,
   rewardReducer,
-  childReducer
+  childReducer,
+  choreReducer
 })
 
 // crerate the storenpm

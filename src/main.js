@@ -22,7 +22,7 @@ import ChildLayout from 'layout/childLayout'
 // Parent UI
 
 import Landing from 'ui/landing/landing';
-import Profile from 'ui/profile'
+import Profile from 'ui/profile/profile'
 import Chore from 'ui/chores/createChore'
 import Progress from 'ui/progress'
 import Calendar from 'ui/calendar'
@@ -46,22 +46,22 @@ import CProgress from 'ui/childProgress/childProgress'
 import CReward from 'ui/childRewards/childRewards'
 import CChores from 'ui/childChores/childChores'
 import Wishlist from 'ui/wishlist/wishlist'
-
-
+import CProfile from 'ui/profile/childProfile'
 
 const Site = (
   <MuiThemeProvider>
   	<Provider store={store}>
 	    <Router history={browserHistory}>
 	    	<Route path="/" component={Home} />
+	    	<Route component={LoginLayout}>
 	    	<Route component={ChildLayout} >
 			    <Route path="/childLanding" component={CLanding} />
 			    <Route path="/childProgress" component={CProgress} />
 			    <Route path="/childRewards" component={CReward} />
 			    <Route path="/childChores" component={CChores} />
 			    <Route path="/wishlist" component={Wishlist} />
+			    <Route path="/childProfile" component={CProfile}/>
 			</Route>
-		    <Route component={LoginLayout}>
 		     <Route path="/childLogin" component={ChildLogin} />
 		     <Route path="/register" component={Register} />
 		     <Route path="/parentLogin" component={ParentLogin} />

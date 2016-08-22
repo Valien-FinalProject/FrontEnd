@@ -1,16 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import {getChoreByChildId, makeChorePending} from 'api/api'
+import {getCurrentChoresById, getChoreByChildId, makeChorePending} from 'api/api'
 import Cookie from 'js-cookie'
+import RaisedButton from 'material-ui/RaisedButton'
+import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
+
 
 
 const style={
-	width:"70%",
+	width:"60%",
 	border:"1px solid black"
 }
 const ChildRewards =  React.createClass({
   componentWillMount:function(){
-    getChoreByChildId(localStorage.getItem("childId"))
+    getCurrentChoresById()
+    // getChoreByChildId()
   },
   handleSubmit:function(id){
     console.log(id)
@@ -21,14 +25,23 @@ const ChildRewards =  React.createClass({
     console.log(this.props.chores)
     return (
       <div style={style}>
-      	<h1>Chores available</h1>
-      		<ul>
+      	<h1>Chores Assigned</h1>
+      		<Table >
+          <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
+            <TableRow>
+              <TableHeaderColumn>Chore</TableHeaderColumn>
+              <TableHeaderColumn>Description</TableHeaderColumn>
+              <TableHeaderColumn>Points</TableHeaderColumn>
+              <TableHeaderColumn>Delete</TableHeaderColumn>
+            </TableRow>
+          </TableHeader>
+          <TableBody displayRowCheckbox={false}>
             {this.props.chores.map(function(chore){
-              return <li key={chore.id} >Chore:{chore.name} Description:{chore.description} Points:{chore.value} <button type="submit" onTouchTap={(id) => this.handleSubmit(chore.id)} >Complete</button> </li>
+             return <TableRow key={chore.id}> <TableRowColumn>{chore.name}</TableRowColumn><TableRowColumn>{chore.description}</TableRowColumn><TableRowColumn>{chore.value}</TableRowColumn> <TableRowColumn><RaisedButton  onTouchTap={(e) =>this.handleSubmit(chore.id)} label="Complete"/></TableRowColumn></TableRow>
             }.bind(this))}
-      			
-      		</ul>
             
+          </TableBody>
+        </Table>
 
       </div>
     )
@@ -38,7 +51,8 @@ const ChildRewards =  React.createClass({
 const stateToProps = function(state){
   console.log(state)
   return{
-    chores:state.parentReducer.chores
+    chores:state.choreReducer.current,
+
   }
 }
 

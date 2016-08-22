@@ -1,29 +1,47 @@
 import React from 'react';
-import RaisedButton from 'material-ui/RaisedButton'
 import {connect} from 'react-redux'
-import {getAllRewards} from 'api/api'
+import {getAllRewards, deleteReward} from 'api/api'
+import RaisedButton from 'material-ui/RaisedButton'
+import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
 
 
 const style={
   display:"inline-block",
   width:"50%",
-  textAlign:"center"
+  textAlign:"center",
+  borderRight:"1px dashed black"
 }
 const CurrentRewards = React.createClass({
   componentWillMount:function(){
     getAllRewards()
   },
+  deleteReward:function(id){
+    deleteReward(id)
+  },
   render: function () {
     return (
       <div style={style}>
-      	<h1> All available rewards </h1>
-      		<ul>
-          {this.props.rewards.map(function(item){
-            return <li key={item.id}>{item.description}  Points: {item.points} <RaisedButton name="delete" label="delete" /></li>
-          })}
-      			
-      		</ul>
+      	<h1 style={{textAlign:"center"}}> All available rewards </h1>
+
+        
+        <Table >
+          <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
+            <TableRow>
+              <TableHeaderColumn>Description</TableHeaderColumn>
+              <TableHeaderColumn>Points</TableHeaderColumn>
+              <TableHeaderColumn>Delete</TableHeaderColumn>
+            </TableRow>
+          </TableHeader>
+          <TableBody displayRowCheckbox={false}>
+            {this.props.rewards.map(function(reward){
+             return <TableRow key={reward.id}> <TableRowColumn>{reward.description}</TableRowColumn><TableRowColumn>{reward.points}</TableRowColumn> <TableRowColumn><RaisedButton  onTouchTap={(e) =>this.deleteReward(reward.id)} label="Delete"/></TableRowColumn></TableRow>
+            }.bind(this))}
+            
+          </TableBody>
+        </Table>
+
+
 
       </div>
     )

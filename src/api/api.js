@@ -20,6 +20,16 @@ export function getChildren(){
 	})
 }
 
+export function deleteChild(id){
+	api.delete(`/parent/child/${id}`).then(function(response){
+		console.log("Child Removed", response)
+		store.dispatch({
+			type:"DELETE_CHILD",
+			id
+		})
+	})
+}
+
 export function childLogin(username, password){
 	api.childlogin(username, password).then(function(response){
 		browserHistory.push("/childLanding")
@@ -70,6 +80,18 @@ export function getRewards(){
 		store.dispatch({
 			type:"FETCH_REWARDS_CHILD",
 			rewards:response.data
+		})
+	}).catch(function(err){
+		console.dir(err)
+	})
+}
+
+export function deleteReward(id){
+	api.delete(`/parent/reward/${id}`).then(function(response){
+		console.log("Reward Deleted", response)
+		store.dispatch({
+			type:"DELETE_REWARD",
+			id
 		})
 	}).catch(function(err){
 		console.dir(err)
@@ -160,8 +182,8 @@ export function getAllChores(){
 		console.dir(err)
 	})
 }
-export function getChoreByChildId(id){
-	api.get(`/parent/child/${id}/chores`).then(function(response){
+export function getChoreByChildId(){
+	api.get(`/child/chores`).then(function(response){
 		console.log(response)
 		store.dispatch({
 			type:"GET_CHILD_CHORES",
@@ -173,7 +195,7 @@ export function getChoreByChildId(id){
 
 }
 export function getPoolChores(){
-	api.get('/parent/chores/pool').then(function(response){
+	api.get('/child/chores/pool').then(function(response){
 		store.dispatch({
 			type:"GET_POOL_CHORES",
 			pool:response.data
@@ -183,8 +205,8 @@ export function getPoolChores(){
 	})
 }
 
-export function getCurrentChoresById(id){
-	api.get(`/parent/child/${id}/current`).then(function(response){
+export function getCurrentChoresById(){
+	api.get(`/child/current`).then(function(response){
 		console.log("getCurrentChoresById", response)
 		store.dispatch({
 			type:"GET_CURRENT_CHORES",
@@ -196,7 +218,20 @@ export function getCurrentChoresById(id){
 	})
 }
 
-export function getPendingChoresById(id){
+export function getParentCurrentChoresById(id){
+	api.get(`parent/child/${id}/current`).then(function(response){
+		console.log("getCurrentChoresById", response)
+		store.dispatch({
+			type:"GET_CURRENT_CHORES",
+			current:response.data
+
+		})
+	}).catch(function(err){
+		console.dir(err)
+	})
+}
+
+export function getParentPendingChoresById(id){
 	api.get(`/parent/child/${id}/pending`).then(function(response){
 		console.log("getPendingChoresById", response)
 		store.dispatch({
@@ -208,8 +243,59 @@ export function getPendingChoresById(id){
 	})
 }
 
-export function getCompleteChoresById(id){
-	api.get(`/parent/child/${id}/complete`).then(function(response){
+export function getPendingChoresById(){
+	api.get(`/child/pending`).then(function(response){
+		console.log("getPendingChoresById", response)
+		store.dispatch({
+			type:"GET_PENDING_CHORES",
+			pending:response.data
+		})
+	}).catch(function(err){
+		console.dir(err)
+	})
+}
+
+//==============Points========
+export function addPoints(id, points){
+	api.put(`/parent/add/child/${id}`, {id:id, newPoint:points}).then(function(response){
+		console.log("addPoints", response)
+		store.dispatch({
+			type:"ADD_POINTS",
+			points:response.data
+		})
+	}).catch(function(err){
+		console.dir(err)
+	})
+}
+
+export function removePoints(id, points){
+	api.put(`/parent/deduct/child/${id}`, {points:points}).then(function(response){
+		console.log("removePoints", response)
+		store.dispatch({
+			type:"REMOVE_POINTS",
+			points:response.data
+		})
+	}).catch(function(err){
+		console.dir(err)
+	})
+}
+export function getPoints(){
+	api.get('/child/points').then(function(response){
+			console.log("points", response)
+		store.dispatch({
+			type:"GET_POINTS",
+			points:response.data
+		})
+	}).catch(function(err){
+		console.dir(err)
+	})
+}
+
+//------change chore status-------
+
+
+export function getCompleteChoresById(){
+	api.get(`/child/complete`).then(function(response){
 		console.log("getCompleteChoresById", response)
 		store.dispatch({
 			type:"GET_COMPLETE_CHORES",
@@ -220,12 +306,26 @@ export function getCompleteChoresById(id){
 	})
 }
 
+export function getParentCompleteChoresById(id){
+	api.get(`parent/child/${id}/complete`).then(function(response){
+		console.log("getCompleteChoresById", response)
+		store.dispatch({
+			type:"GET_COMPLETE_CHORES",
+			complete:response.data
+		})
+	}).catch(function(err){
+		console.dir(err)
+	})
+}
+
+
 export function postToComplete(childId, choreId){
 	api.post(`/parent/child/${childId}/approve/${choreId}`).then(function(response){
 		console.log("postToComplete", response)
 		store.dispatch({
 			type:"POST_TO_COMPLETE",
-			complete:response.data
+			complete:response.data,
+			id:choreId
 		})
 	}).catch(function(err){
 		console.dir(err)
@@ -235,17 +335,13 @@ export function postToIncomplete(choreId){
 	api.post(`/parent/chore/${choreId}/deny`).then(function(response){
 		store.dispatch({
 			type:"POST_TO_INCOMPLETE",
-			current:response.data
+			current:response.data,
+			id:chore
 		})
+	}).catch(function(err){
+		console.dir(err)
 	})
 }
-export function handleValue(value){
-	store.dispatch({
-		type:"TOGGLE_LANDING",
-		value
-	})
-}
-
 
 export function makeChorePending(id){
 	api.put(`/child/chore/${id}/pending`).then(function(response){
@@ -253,7 +349,8 @@ export function makeChorePending(id){
 		console.log(id)
 		store.dispatch({
 			type:"MAKE_CHORE_PENDING",
-			chore:response.data
+			chore:response.data,
+			id
 		})
 	}).catch(function(err){
 		console.dir(err)
@@ -271,6 +368,18 @@ export function markChoreComplete(childId, choreId){
 
 }
 
+//get id from radio buttons
+
+export function handleValue(value){
+	store.dispatch({
+		type:"TOGGLE_LANDING",
+		value
+	})
+}
+
+
+//chore creation
+
 export function createChore(description, endDate, name,  startDate, value ){
 	api.post('/parent/chore', {description:description, endDate:endDate, name:name, startDate:startDate, value:value})
 	.then(function(response){
@@ -284,6 +393,23 @@ export function createChore(description, endDate, name,  startDate, value ){
 	})
 }
 
+export function changeChoreFromPool(id){
+	var kidId = localStorage.getItem("childId")
+	api.put(`child/chore/${id}`)
+	.then(function(response){
+		console.log(response)
+		store.dispatch({
+			type:"CHANGE_CHORE_FROM_POOL",
+			chore:response.data,
+			id
+		})
+	}).catch(function(err){
+		console.dir(err)
+	})
+}
+
+//chore assignment
+
 export function assignChore(id, description, endDate, name,  startDate, value){
 	api.post(`/parent/child/${id}/chore`, {description:description, endDate:endDate, name:name, startDate:startDate, value:value})
 	.then(function(response){
@@ -296,6 +422,19 @@ export function assignChore(id, description, endDate, name,  startDate, value){
 		console.dir(err)
 	})
 }
+//chore deletion
+
+export function deleteChore(id){
+	api.delete(`parent/chore/${id}`).then(function(response){
+		console.log("deletingChore", response)
+		store.dispatch({
+			type:"DELETE_CHORE",
+			id
+		})
+	})
+}
+
+
 
 
 export function logout(){
