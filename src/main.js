@@ -24,7 +24,7 @@ import ChildLayout from 'layout/childLayout'
 import Landing from 'ui/landing/landing';
 import Profile from 'ui/profile/profile'
 import Chore from 'ui/chores/createChore'
-import Progress from 'ui/progress'
+import Progress from 'ui/parentProgress/progress'
 import Calendar from 'ui/calendar'
 import Reward from 'ui/rewards/addReward'
 import ViewReward from 'ui/rewards/viewRewards'

@@ -97,6 +97,17 @@ export function deleteReward(id){
 		console.dir(err)
 	})
 }
+export function getRewardsById(id){
+	api.get(`/parent/reward/${id}`).then(function(response){
+		console.log("GetRWDbyID", response)
+		store.dispatch({
+			type:"REWARDS_BY_ID",
+			rewards:response.data
+		})
+	}).catch(function(err){
+		console.dir(err)
+	})
+}
 
 export function deleteWish(id){
 	api.delete(`/child/delete/wishlist/${id}`).then(function(response){
