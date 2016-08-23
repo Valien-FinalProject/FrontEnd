@@ -20,8 +20,8 @@ Calendar,
 Frequency,
 Graphs,
 Styling.
-Value change on Toggle
-Need to send screenshots to Val
+Value change on Toggle   ----- Done
+Need to send screenshots to Val ----- Done
 
 
 Missing Parts, Back-end:

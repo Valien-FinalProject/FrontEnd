@@ -291,6 +291,19 @@ export function getPoints(){
 	})
 }
 
+export function deductPointsChild(points){
+	api.put('/child/deduct', {points:points}).then(function(response){
+		console.log("childdeduct", response)
+		store.dispatch({
+			type:"DEDUCT_CHILD",
+			points:response.data
+
+		})
+	}).catch(function(err){
+		console.dir(err)
+	})
+}
+
 //------change chore status-------
 
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import {getRewards, getWishes, getPoints, addPoints, removePoints} from 'api/api'
+import {getRewards, getWishes, getPoints, deductPointsChild} from 'api/api'
 import TestRewards from 'ui/childRewards/testrewards'
 import TestWishes from 'ui/childRewards/testwishes'
 import RaisedButton from 'material-ui/RaisedButton'
@@ -14,8 +14,8 @@ const Rewards = React.createClass({
   
   },
   cashIn:function(points){
-    var id = localStorage.getItem("childId")
-    addPoints(id, points)
+    console.log(points)
+    deductPointsChild(points)
   },
   render: function () {
     console.log(this.props.points )

@@ -9,15 +9,15 @@ import TextField from 'material-ui/TextField'
 const style={
 	display:"inline-block",
 	width:"50%",
-	margin:"auto",
   textAlign:"center"
 }
 const radioStyle={
 	display:"flex",
 	flexDirection:"row",
 	width:120,
-  margin:"auto",
-  borderBottom:30
+  borderBottom:30,
+  margin:"8, auto"
+
 }
 
 const button={

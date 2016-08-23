@@ -21,6 +21,7 @@ const CompleteChores = React.createClass({
 })
 
 const stateToProps = function(state){
+  console.log("stateincomplete", state)
   return{
     complete:state.choreReducer.complete
   }

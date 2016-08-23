@@ -18,8 +18,6 @@ export default function(state= choreInitialState, action){
 			return{...state, chores:action.chores}
 		case "ADD_CHORE_POOL":
 			return{...state, chores:[...state.chores, action.chore]}
-		// case "MARK_CHORE_COMPLETE":
-		// 	return{...state, complete:action.chore}
 		case "GET_COMPLETE_CHORES":
 			return{...state, complete:action.complete}
 		case "POST_TO_COMPLETE":
