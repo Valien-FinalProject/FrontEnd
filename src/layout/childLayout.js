@@ -1,68 +1,71 @@
 import React from 'react';
 import {Link} from 'react-router'
-import IconMenu from 'material-ui/IconMenu';
-import IconButton from 'material-ui/IconButton';
-import FontIcon from 'material-ui/FontIcon';
-import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more';
-import MenuItem from 'material-ui/MenuItem';
-import DropDownMenu from 'material-ui/DropDownMenu';
-import RaisedButton from 'material-ui/RaisedButton';
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ActionGrade from 'material-ui/svg-icons/action/grade';
+import {yellow600} from 'material-ui/styles/colors'
+import FontIcon from 'material-ui/FontIcon'
+import {browserHistory} from 'react-router'
 
 import {logout, cookieGetter} from 'api/api'
 
+require('font-awesome/css/font-awesome.min.css');
 
-
-export default class ToolbarExamplesSimple extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 1,
-      value2: 1
-    };
-  }
-
-  handleChange = (event, index, value) => this.setState({value});
-  handleChange2 = (event, index, value) => this.setState({value2});
-  logoutChild(){
-    logout()
-
-  };
-  checkCookie(){
-    cookieGetter()
-  };
-
-  render() {
-    return (
-      <div>
-      <Toolbar style={{marginBottom:10}}>
-        <ToolbarGroup firstChild={true}>
-          <DropDownMenu value={this.state.value} onChange={this.handleChange}>
-            <MenuItem value={1} containerElement={<Link to="/childLanding" />}  primaryText="Home"/>
-            <MenuItem value={2} containerElement={<Link to="/childProgress" />} primaryText="View Progress" />
-            <MenuItem value={3} containerElement={<Link to="/ChildRewards" />} primaryText="View Rewards" />
-            <MenuItem value={4} containerElement={<Link to="/ChildChores" />} primaryText="View Chores" />
-            <MenuItem value={5} containerElement={<Link to="/wishlist" />} primaryText="WishList" />
-          </DropDownMenu>
-        </ToolbarGroup>
-        <ToolbarGroup>
-         <ToolbarTitle text={"username: " + localStorage.getItem("childUN")} />
-          <IconMenu
-            iconButtonElement={
-              <IconButton touch={true}>
-                <NavigationExpandMoreIcon />
-              </IconButton>
-            }
-          >
-            <MenuItem  containerElement={<Link to="/childProfile" />} primaryText="Settings" />
-            <MenuItem  onTouchTap={this.checkCookie} primaryText="Cookie Checker" />
-            <MenuItem  onTouchTap={this.logoutChild} primaryText="Logout" />
-          </IconMenu>
-        </ToolbarGroup>
-      </Toolbar>
-        {this.props.children}
-      </div>
-    );
-  }
+const holderStyle = {
+  display:"inline-block",
+  width:"100%",
+  height:200,
+  marginTop:20,
+  paddingBottom:20
 }
+
+
+const iconStyle={
+  color:"black"
+}
+
+
+export default React.createClass({
+  pushToWish:function(){
+    browserHistory.push('/wishlist')
+  },
+  pushToLanding:function(){
+    browserHistory.push('/childLanding')
+  },
+  pushtoRewards:function(){
+    browserHistory.push('/childRewards')
+  },
+  pushToLogout:function(){
+    logout()
+  },
+  render: function () {
+    return (
+        <div style={holderStyle}>
+          <div style={{margin:"auto", width:"50%", display:"flex", flexDirection:"row", justifyContent:"space-between"}}>
+            <FloatingActionButton onTouchTap={this.pushToLanding} backgroundColor="white" iconStyle={iconStyle}>
+              <FontIcon
+                className="fa fa-list"
+                />
+            </FloatingActionButton>
+            <FloatingActionButton onTouchTap={this.pushtoRewards} backgroundColor="white" iconStyle={iconStyle}>
+                <FontIcon
+                  className="fa fa-trophy"
+
+                  />
+            </FloatingActionButton>
+            <FloatingActionButton onTouchTap={this.pushToWish} backgroundColor="white" iconStyle={iconStyle}>
+              <FontIcon
+                className="fa fa-cloud"
+                />
+            </FloatingActionButton>
+            <FloatingActionButton onTouchTap={this.pushToLogout} backgroundColor="white" iconStyle={iconStyle}>
+              <FontIcon
+                className="fa fa-sign-out"
+                />
+            </FloatingActionButton>
+
+          </div>
+          {this.props.children}
+        </div>
+    )
+  }
+})

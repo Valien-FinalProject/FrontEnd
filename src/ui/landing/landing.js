@@ -56,9 +56,7 @@ const parentLanding =  React.createClass({
   },
 
   render: function () {
-    if(this.props.children.length ===0 ){
-      return(<div>Hello</div>)
-    }else{
+    
     return (
       <div>
         <div style={radioStyle}>
@@ -85,7 +83,7 @@ const parentLanding =  React.createClass({
       </div>
     )
   }
-}
+
 })
 
 const stateToProps = function(state){

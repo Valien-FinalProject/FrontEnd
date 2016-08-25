@@ -2,3 +2,5 @@ node_modules
 bundle*
 dist
 .DS_Store
+src/ui/assets/fonts/fontawesome*
+src/ui/assets/images/React*

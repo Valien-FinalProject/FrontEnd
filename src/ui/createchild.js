@@ -80,7 +80,7 @@ const ChildCreator = React.createClass({
         <div style={{width:"50%"}}>
           <ul>
             {this.props.children.map(function(child){
-              return <li key={child.id}>{child.name}  <RaisedButton title=":...(" onTouchTap={(e) => this.deleteChild(child.id)} label="Delete Forever"/></li>
+              return <li key={child.id}>{child.name}  <RaisedButton title=":...(" onTouchTap={(e) => this.deleteChild(child.id)} label="Remove Child Permanently"/></li>
             }.bind(this))}
           </ul>
         </div>

@@ -4,6 +4,14 @@ import { Router, Route, browserHistory} from 'react-router';
 import store from 'store'
 import { Provider } from 'react-redux'
 
+
+
+//Charting Requires
+const Highcharts =  require('highcharts')
+require('highcharts/modules/exporting')(Highcharts);
+
+
+//Material UI and OnTouchTap
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -11,12 +19,12 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
+//Styles
 var style = require('assets/styles/style.scss')
 var calStyle = require('../node_modules/react-big-calendar/lib/css/react-big-calendar.scss')
 
 // Layout
 import ParentLayout from 'layout/parentlayout';
-import LoginLayout from 'layout/topLogoLayout'
 import ChildLayout from 'layout/childLayout'
  
 // Parent UI
@@ -53,7 +61,6 @@ const Site = (
   	<Provider store={store}>
 	    <Router history={browserHistory}>
 	    	<Route path="/" component={Home} />
-	    	<Route component={LoginLayout}>
 	    	<Route component={ChildLayout} >
 			    <Route path="/childLanding" component={CLanding} />
 			    <Route path="/childProgress" component={CProgress} />
@@ -75,7 +82,6 @@ const Site = (
 		        <Route path="/viewRewards" component={ViewReward} />
 		        <Route path="/createChild" component={CreateChild} />
 		      </Route>
-		    </Route>
 	    </Router>
 	</Provider>
  </MuiThemeProvider>

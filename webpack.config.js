@@ -40,6 +40,11 @@ module.exports = {
         loader: ExtractCSS.extract(['css', 'sass'])
       },
 
+      {
+        test: /\.css$/i,
+        loader: ExtractCSS.extract(['css'])
+      },
+
       // fonts
       {
         test: /\.woff(\?.*)?$/,

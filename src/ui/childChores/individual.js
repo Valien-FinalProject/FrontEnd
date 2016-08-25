@@ -27,7 +27,7 @@ const ChildRewards =  React.createClass({
       <div style={style}>
       	<h1>Chores Assigned</h1>
       		<Table >
-          <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
+          <TableHeader displaySelectAll={true} adjustForCheckbox={true}>
             <TableRow>
               <TableHeaderColumn>Chore</TableHeaderColumn>
               <TableHeaderColumn>Description</TableHeaderColumn>

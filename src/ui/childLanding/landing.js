@@ -13,25 +13,23 @@ const div2 ={
   backgroundColor:"rgba(255,255,0,.5)",
   overflow:"scroll"
 }
-const div1 ={
-  backgroundColor:"rgba(255,0,0,.5)",
-  overflow:"scroll"
-}
+
 export default React.createClass({
   render: function () {
     return (
       <div id="landingPage">
-      	<div style={div1} className="landingBox">
+      	<div style={{marginTop:20}} className="landingBox">
       		<Current />
-      	</div>
-      	<div style={div2} className="landingBox">
-      		<Pending />
-      	</div>
-      	<div style={div3} className="landingBox">
-      		<Complete />
       	</div>
 
       </div>
     )
   }
 })
+
+// <div style={div2} className="landingBox">
+//           <Pending />
+//         </div>
+//         <div style={div3} className="landingBox">
+//           <Complete />
+//         </div>

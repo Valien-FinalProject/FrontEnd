@@ -14,7 +14,7 @@ export default React.createClass({
     return (
       <div style={style}>
       	<Search />
-      	<ShowWishlist />
+      	
 
 
 
@@ -22,3 +22,5 @@ export default React.createClass({
     )
   }
 })
+
+// <ShowWishlist />

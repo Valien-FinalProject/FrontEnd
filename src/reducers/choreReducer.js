@@ -38,7 +38,9 @@ export default function(state= choreInitialState, action){
 			case "GET_CURRENT_CHORES":
 			return{...state, current:action.current}
 		case "POST_TO_INCOMPLETE":
-			return{...state, current:[...state.current, action.current]}
+			return{...state, current:[...state.current, action.current], pending:state.pending.filter(function(item){
+				return item.id !== action.id
+			})}
 		default:
 			return state
 	}

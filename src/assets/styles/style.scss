@@ -1,10 +1,23 @@
+
+//import font
+@font-face{
+	font-family: 'Chalky';
+	src: url('../fonts/KGBrokenVesselsSketch.ttf');
+	background-image:url('../images/chalkboard2.jpg');
+}
+
+
 //style standardization
+
+
 a{
 	text-decoration: none;
 	color:blue	;
 }
 body{
-	font-family: "Roboto", sans-serif
+	font-family: "Roboto", sans-serif;
+	background-image:url('../images/chalkboard2.jpg');
+
 }
 ul{
 	list-style:none;
@@ -43,19 +56,30 @@ ul{
 
 	h1{
 		text-align: center;
+		color:white;
+		font-size:58px;
+		letter-spacing: 1.1em;
+		font-family: 'Chalky';	
 	}
 
 	.landingBox{
-	border:1px solid black;
-	height:425px;
-	width:33%;
+	height:1000px;
+	width:100%;
+	// background-image:url('../images/chalkboard2.jpg');
+	overflow:scroll;
+	clear:both
 	}
 }
 
+.tableLanding{
+		background-image:url('../images/chalkboard2.jpg');
+		width:100%;
+		color:white;
 
+}
 .deny{
 	width:23px;
-	background-color: red;
+	background-color: rgb(0,233,233);
 }
 
 #homeContainer{
@@ -66,7 +90,9 @@ ul{
 	list-style: none;
 }
 
-
+.starClass{
+	fill:orange;
+}
 
 //ORIGINALLY in Child REWARDS
 // <ul style={{paddingLeft:0}}> 

@@ -11,8 +11,6 @@ const style={
   width:"50%",
   textAlign:"center",
   borderRight:"1px dashed black",
-  marginTop:0,
-  marginBottom:0
 }
 const CurrentRewards = React.createClass({
   componentWillMount:function(){

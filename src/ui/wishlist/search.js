@@ -4,12 +4,24 @@ import RaisedButton from 'material-ui/RaisedButton'
 
 import Wishlister from 'ui/wishlist/wishlister'
 import {makeAWish, getWishes} from 'api/api'
-
-
+import {darkWhite, white, blueA700, lightWhite, fullWhite} from 'material-ui/styles/colors.js'
 
 const style={
-	width:"50%",
-	border:"3px solid green"
+  fontFamily:"Chalky",
+  color:darkWhite,
+  fontSize:48,
+  textAlign:"center"
+}
+
+const styles={
+ style:{
+  	width:"100%"
+  },
+  errorStyle:{
+    color: lightWhite,
+    fontSize:24,
+    fontFamily:"Chalky"
+  }
 
 }
 export default React.createClass({
@@ -22,6 +34,8 @@ export default React.createClass({
     var newState = Object.assign({}, this.state)
     newState[e.target.name] = e.target.value
     this.setState(newState)
+
+  
   },
   handleSubmit:function(e){
     e.preventDefault()
@@ -33,11 +47,11 @@ export default React.createClass({
   render: function () {
     console.log("wishstate", this.state.wish)
     return (
-    	<div style={style}>
-    		<h1> Add Wish</h1>
+    	<div style={styles.style}>
+    		<h1 style={style}> Add An Item To Your Wishlist!</h1>
             <form onSubmit={this.handleSubmit}>
-    		  <TextField onChange={this.handleChange} name="wish" hintText="Add Wish" />
-              <RaisedButton label="Make A Wish" type="submit" />
+    		  <TextField inputStyle={{color:fullWhite, fontSize:24, fontFamily:"Chalky"}} hintStyle={styles.errorStyle} fullWidth={true} onChange={this.handleChange} ref="wishes" name="wish" hintText="Add Wish" />
+              <RaisedButton style={{marginLeft:"48%", textAlign:"center"}} label="Make A Wish" type="submit" />
             </form>
     		<Wishlister />
 

@@ -6,12 +6,27 @@ import TestWishes from 'ui/childRewards/testwishes'
 import RaisedButton from 'material-ui/RaisedButton'
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
+
+const bodyStyle={
+  fontFamily:"Chalky",
+  color:"white",
+  fontSize:48
+
+}
+
+const bodyStyle1={
+  fontFamily:"Chalky",
+  color:"white",
+  fontSize:48,
+  width:"50%",
+  overflowX:"auto"
+
+}
+
 const Rewards = React.createClass({
   componentWillMount:function(){
     getRewards();
     getPoints()
-
-  
   },
   cashIn:function(points){
     console.log(points)
@@ -20,19 +35,20 @@ const Rewards = React.createClass({
   render: function () {
     console.log(this.props.points )
     return (
-      <div style={{width:"75%", margin:"auto", textAlign:"auto"}}>
-      	<h1 style={{textAlign:"center"}}> Current Point Total: {this.props.points}</h1>
-      	<Table >
+      <div style={{width:"95%", margin:"auto", textAlign:"auto", fontFamily:"Chalky", color:"white"} }>
+        <h1 style={{textAlign:"center", fontSize:58}}> REWARD$</h1>
+      	<h1 style={{textAlign:"center", fontSize:52}}> Current Point Total: {this.props.points}</h1>
+      	<Table style={bodyStyle} className="tableLanding" >
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>
-              <TableHeaderColumn>Description</TableHeaderColumn>
-              <TableHeaderColumn>Points</TableHeaderColumn>
-              <TableHeaderColumn>Cash In</TableHeaderColumn>
+              <TableHeaderColumn style={{width:"50%", fontSize:52}}>Description</TableHeaderColumn>
+              <TableHeaderColumn style={{fontSize:52}}>Points</TableHeaderColumn>
+              <TableHeaderColumn style={{fontSize:52}}>Cash In</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody displayRowCheckbox={false}>
             {this.props.rewards.map(function(reward){
-             return <TableRow key={reward.id}> <TableRowColumn>{reward.description}</TableRowColumn><TableRowColumn>{reward.points}</TableRowColumn> <TableRowColumn><RaisedButton  onTouchTap={(e) =>this.cashIn(reward.points)} label="Cash In"/></TableRowColumn></TableRow>
+             return <TableRow style={{lineHeight:1.3}} key={reward.id}> <TableRowColumn title={reward.description} style={bodyStyle1}>{reward.description}</TableRowColumn><TableRowColumn style={bodyStyle}>{reward.points}</TableRowColumn> <TableRowColumn><RaisedButton  onTouchTap={(e) =>this.cashIn(reward.points)} label="Cash In"/></TableRowColumn></TableRow>
             }.bind(this))}
             
           </TableBody>

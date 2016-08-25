@@ -356,11 +356,12 @@ export function postToComplete(childId, choreId){
 	})
 }
 export function postToIncomplete(choreId){
-	api.post(`/parent/chore/${choreId}/deny`).then(function(response){
+	api.put(`/parent/chore/${choreId}/deny`).then(function(response){
+		console.log("postToIncomplete", response)
 		store.dispatch({
 			type:"POST_TO_INCOMPLETE",
 			current:response.data,
-			id:chore
+			id:choreId
 		})
 	}).catch(function(err){
 		console.dir(err)
