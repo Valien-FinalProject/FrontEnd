@@ -35,7 +35,7 @@ const CurrentRewards = React.createClass({
           </TableHeader>
           <TableBody displayRowCheckbox={false}>
             {this.props.rewards.map(function(reward){
-             return <TableRow key={reward.id}> <TableRowColumn>{reward.description}</TableRowColumn><TableRowColumn>{reward.points}</TableRowColumn> <TableRowColumn><RaisedButton  onTouchTap={(e) =>this.deleteReward(reward.id)} label="Delete"/></TableRowColumn></TableRow>
+             return <TableRow key={reward.id}> <TableRowColumn>{reward.name}</TableRowColumn><TableRowColumn>{reward.points}</TableRowColumn> <TableRowColumn><RaisedButton  onTouchTap={(e) =>this.deleteReward(reward.id)} label="Delete"/></TableRowColumn></TableRow>
             }.bind(this))}
             
           </TableBody>

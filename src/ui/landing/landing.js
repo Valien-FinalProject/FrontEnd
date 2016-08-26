@@ -11,25 +11,33 @@ import {getChildren, handleValue, getParentCurrentChoresById,getParentCompleteCh
 import Cookie from 'js-cookie'
 
 const div3 ={
-  backgroundColor:"rgba(0,145,0,.5)",
-  overflow:"auto"
+  backgroundColor:"rgba(0,145,0,.3)",
+  overflow:"auto",
+  color:"white",
+  fontFamily:"Chalky",
 }
 
 const div2 ={
-  backgroundColor:"rgba(255,255,0,.5)",
-  overflow:"auto"
+  backgroundColor:"rgba(255,255,0,.3)",
+  overflow:"auto", 
+  color:"white",
+  fontFamily:"Chalky"
 
 }
 const div1 ={
-  backgroundColor:"rgba(255,0,0,.5)",
-  overflow:"auto"
+  backgroundColor:"rgba(255,0,0,.3)",
+  overflow:"auto",
+  color:"white",
+  fontFamily:"Chalky"
 
 }
 const radioStyle={
   display:"flex",
   flexDirection:"row",
   width:220,
-  textAlign:"center"
+  textAlign:"center",
+  color:"white",
+  fontFamily:"Chalky"
 }
 const parentLanding =  React.createClass({
   getInitialState:function(){
@@ -40,8 +48,13 @@ const parentLanding =  React.createClass({
   componentWillMount:function(){
     console.log(Cookie.get())
     getChildren()
+    var x = Number(localStorage.getItem('ChildIdforDefault'))
+    getParentCurrentChoresById(x)
+    getParentCompleteChoresById(x)
+    getParentPendingChoresById(x)
+    
   },
-  handleClick:function(){
+    handleClick:function(){
     cookieGetter()
   },
   handleChange:function(e, value){
@@ -56,25 +69,24 @@ const parentLanding =  React.createClass({
   },
 
   render: function () {
-    
     return (
       <div>
         <div style={radioStyle}>
           <span>Toggle Child:</span>
-          <RadioButtonGroup style={radioStyle} name="children"  onChange={(e, value) => this.handleChange(e, value)}> 
+          <RadioButtonGroup style={radioStyle} name="children" defaultSelected={Number(localStorage.getItem('ChildIdforDefault'))} onChange={(e, value) => this.handleChange(e, value)}> 
           {this.props.children.map(function(item, i){
-            return <RadioButton key={i} value={item.id} label={item.name}  />
+            return <RadioButton inputStyle={{borderColor:"white", color:"white"}} labelStyle={{color:"white", fontFamily:"Chalky", marginLeft:0}} key={i} value={item.id} label={item.name}  />
           })}
           </RadioButtonGroup>
         </div>
       <div id="landingPage">
-      	<div style={div1} className="landingBox">
+      	<div style={div3} className="landingBox">
       		<Current value={this.state.value} />
       	</div>
         <div style={div2} className="landingBox">
           <Pending value={this.state.value} />
         </div>
-        <div style={div3} className="landingBox">
+        <div style={div1} className="landingBox">
           <Complete value={this.state.value} />
         </div>
       	

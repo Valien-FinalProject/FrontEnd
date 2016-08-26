@@ -14,7 +14,7 @@ const Pending = React.createClass({
   render: function () {
     return (
       <div>
-      	<h1> Pending Chores </h1>
+      	<h1> PENDING</h1>
       		<ul>
       		{this.props.pending.map(function(chore){
       			return <li key={chore.id}>{chore.name}<RaisedButton onTouchTap={(e) =>this.denyChore(chore.id)} label="Deny"/><RaisedButton onTouchTap={(e) =>this.approveChore(chore.id)} label="Approve"/></li> 

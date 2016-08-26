@@ -13,6 +13,12 @@ export default function (state=childInitialState, action){
 			return{...state, wishes:action.wishes}
 		case "ADD_WISH":
 			return{...state, wishes:[...state.wishes, action.wish]}
+		case "GET_CHILD_WISH":
+			return{...state, wishes:action.wishes}
+		case "GRANT_WISH":
+			return{...state, wishes:state.wishes.filter(function(item){
+				return item.id !== action.id
+			})}
 		case "DELETE_WISH":
 			return{...state, wishes:state.wishes.filter(function(item){
 				return item.id !== action.id
@@ -25,7 +31,8 @@ export default function (state=childInitialState, action){
 			return{...state, points:state.points + action.points}
 		case "REMOVE_POINTS":
 			return{...state, points:state.points - action.points}
-		
+		case "DEDUCT_CHILD":
+			return{...state, points:state.points - action.points}
 		default:
 			return state
 	}

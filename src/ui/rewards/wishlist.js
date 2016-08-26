@@ -2,8 +2,9 @@ import React from 'react';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import RaisedButton from 'material-ui/RaisedButton'
 import {connect} from 'react-redux'
-import {getChildren} from 'api/api'
+import {getChildren, getChildWish} from 'api/api'
 import TextField from 'material-ui/TextField'
+import Wish from 'ui/rewards/wishitem'
 
 
 const style={
@@ -25,43 +26,41 @@ const button={
 	
 }
 const Wishlist = React.createClass({
+  getInitialState:function(){
+    return{
+      val:0,
+    }
+  },
   componentWillMount:function(){
     getChildren()
+    var x = Number(localStorage.getItem('ChildIdforDefault'))
+    getChildWish(x)
+    
   },
-  handleAssign:function(){
-
-  },
-  handleDeny:function(){
-
-  },
-  handleChange:function(e){
-    var newState = Object.assign({}, this.state)
-    newState[e.target.name] = e.target.value
-    this.setState(newState)
+  handleChange:function(e, value){
+    getChildWish(value)
+    this.setState({
+      val:value
+    })
 
   },
   render: function () {
-    
-    console.log('chilren',this.props.children)
-
     return (
       <div style={style}>
       	<h1> Items on your children's wishlist </h1>
-      	<RadioButtonGroup style={radioStyle} name="children" defaultSelected="child1" >
+      	<RadioButtonGroup style={radioStyle} name="children" onChange={(e, value) => this.handleChange(e, value)} defaultSelected={Number(localStorage.getItem('ChildIdforDefault'))} >
       		{this.props.children.map(function(item, i){
-            return <RadioButton key={i} value={item.name} label={item.name} />
+            return <RadioButton key={item.id} value={item.id} label={item.name} />
           })}
       	</RadioButtonGroup>
 
       	
-      		<p style={{marginRight:20}}>Wishlist item </p> 
-         
-          <TextField type="number" name="points" onChange={this.handleChange} hintText="Assign Points" />
-          <RaisedButton onTouchTap={this.handleAssign} type="submit" backgroundColor="rgba(0,128,0,.4)" name="approve" label="approve"/>
-          <RaisedButton onTouchTap={this.handleDeny} className="deny" type="submit" backgroundColor="rgba(255,0,0,.4)" name="deny" label="deny" />
-          
-
-      	
+      		<p style={{marginRight:20}}>Wishlist {this.props.wishes.length === 1 ? "item" : "items" } </p> 
+         <ul>
+          {this.props.wishes.map(function(item){
+          return <Wish key={item.id} id={item.id} name={item.name} url={item.url} val={this.state.val} image={item.imageUrl} />
+        }.bind(this))}
+      	 </ul>
       </div>
     )
     
@@ -72,7 +71,8 @@ const Wishlist = React.createClass({
 const stateToProps = function(state){
   console.log("state", state)
   return{
-    children:state.parentReducer.children
+    children:state.parentReducer.children,
+    wishes:state.childReducer.wishes
   }
 }
 

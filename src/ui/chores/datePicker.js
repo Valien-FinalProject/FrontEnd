@@ -3,6 +3,7 @@ import DatePicker from 'material-ui/DatePicker';
 import Toggle from 'material-ui/Toggle';
 import TimePickerStart from 'ui/chores/timepickerstart'
 import TimePickerEnd from 'ui/chores/timepickerend'
+import {fullWhite} from 'material-ui/styles/colors'
 
 const optionsStyle = {
   maxWidth: 255,
@@ -54,17 +55,20 @@ export default class DateSelector extends React.Component {
         <div style={optionsStyle}>
           <div style={{borderBottom:"1px solid green", marginBottom:10}}>
             <DatePicker
+              defaultDate={this.state.minDate}
+              textFieldStyle={{fontFamily:"Chalky", color:fullWhite !important}}
               name="startDate"
               onChange={this.handleChangeMinDate}
               autoOk={this.state.autoOk}
               floatingLabelText="Start Date"
-              defaultDate={this.state.minDate}
               disableYearSelection={this.state.disableYearSelection}
             />
             {/*<TimePickerStart />*/}
           </div>  
           <div style={{borderBottom:"1px solid red", marginBottom:10}}>
             <DatePicker
+              style={{color:"white"}}
+              textFieldStyle={{color:"white"}}
               name="endDate"
               onChange={this.handleChangeMaxDate}
               autoOk={this.state.autoOk}

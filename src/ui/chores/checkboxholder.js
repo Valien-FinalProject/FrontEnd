@@ -24,7 +24,6 @@ const CheckboxChild = React.createClass({
   	}
   },
   componentWillMount:function(){
-  	console.log("comp will mount", this.state.children)
   },
   handleCheck:function(name, isChecked){
   	console.log(name)

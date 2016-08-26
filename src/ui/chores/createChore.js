@@ -10,6 +10,12 @@ import DateSelector from 'ui/chores/datePicker'
 import Frequency from 'ui/chores/frequency'
 import Children from 'ui/chores/children'
 
+
+const hintStyle ={
+  color:"white",
+  fontFamily:"Chalky"
+}
+
 export default React.createClass({
   getInitialState:function(){
     return{
@@ -77,11 +83,11 @@ export default React.createClass({
     
     console.log(Object.keys(this.state.id).length)
     return (
-      <div>
+      <div style={{color:"white", fontFamily:"Chalky"}}>
       <form onSubmit={this.handleSubmit}>
-      	<div><TextField name="name" onChange={this.handleChange} floatingLabelFixed={true} floatingLabelText="Chore Name" hintText="New Chore" /></div>
-        <div><TextField name="description" onChange={this.handleChange} floatingLabelFixed={true} floatingLabelText="Chore Description" hintText="Description" multiLine={true} rows={1} rowsMax={3}/> </div>
-      	<div><TextField name="value" onChange={this.handleChange} floatingLabelFixed={true} floatingLabelText="Point Value" hintText="Points" type="number" min="1" max="10000" /></div>
+      	<div><TextField name="name" hintStyle={hintStyle} onChange={this.handleChange} floatingLabelFixed={true} floatingLabelText="Chore Name" hintText="New Chore" /></div>
+        <div><TextField name="description" hintStyle={hintStyle} onChange={this.handleChange} floatingLabelFixed={true} floatingLabelText="Chore Description" hintText="Description" multiLine={true} rows={1} rowsMax={3}/> </div>
+      	<div><TextField name="value" hintStyle={hintStyle} onChange={this.handleChange} floatingLabelFixed={true} floatingLabelText="Point Value" hintText="Points" type="number" min="1" max="10000" /></div>
       	<DateSelector getMinDate={this.getMinDate} getMaxDate={this.getMaxDate} />
       	<div>Assign Frequency: <Frequency getFrequency={this.getFrequency} /> </div>
       	<Children getChildrenId={this.getChildrenId} />

@@ -17,6 +17,8 @@ export default function (state = rewardInitialState, action){
 			return{...state, rewards:action.rewards}
 		case "REWARDS_BY_ID":
 			return{...state, rewards:actions.rewards}
+		case "GRANT_WISH":
+			return{...state, rewards:[...state.rewards, action.wish]}
 
 		default:
 			return state

@@ -5,7 +5,7 @@ const Complete =  React.createClass({
   render: function () {
     return (
       <div>
-      	<h1> Completed Chores</h1>
+      	<h1> COMPLETE</h1>
       		<ul>
 
       			{this.props.complete.map(function(item){

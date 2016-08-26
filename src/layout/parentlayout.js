@@ -28,7 +28,7 @@ export default class ToolbarExamplesSimple extends React.Component {
   };
   render() {
     return (
-      <div>
+      <div className="parentBG" style={{width:"100%", height:"100%"}}>
       <Toolbar style={{marginBottom:10}}>
         <ToolbarGroup firstChild={true}>
           <DropDownMenu value={this.state.value} onChange={this.handleChange}>

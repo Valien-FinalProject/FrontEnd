@@ -19,6 +19,7 @@ body{
 	background-image:url('../images/chalkboard2.jpg');
 
 }
+
 ul{
 	list-style:none;
 	padding-left: 0
@@ -58,7 +59,7 @@ ul{
 		text-align: center;
 		color:white;
 		font-size:58px;
-		letter-spacing: 1.1em;
+		letter-spacing: .2em;
 		font-family: 'Chalky';	
 	}
 
@@ -92,6 +93,24 @@ ul{
 
 .starClass{
 	fill:orange;
+}
+
+input[type='radio'] {
+   border:red;
+   color:white;
+}
+
+.parentBG{
+	background-image:url('../images/chalkboard3.jpg');
+	position:fixed !important;
+	position: absolute;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+
+
+
 }
 
 //ORIGINALLY in Child REWARDS

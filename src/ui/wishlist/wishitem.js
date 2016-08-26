@@ -10,10 +10,10 @@ export default React.createClass({
   },
   render: function () {
     return (
-      <div>
-      	<ul>
-      		<li id={this.props.id}>{this.props.name} <button onClick={this.deleteMe}>Delete</button></li>
-      	</ul>
+      <div style={{height:200}}>
+      
+      		<li id={this.props.id}><a href={this.props.url}>{this.props.name} <img src={this.props.image} style={{float:"right", display:"inline-block", width:180, height:180}}/></a></li>
+      
 
 
       </div>

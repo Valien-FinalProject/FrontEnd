@@ -27,6 +27,8 @@ export function deleteChild(id){
 			type:"DELETE_CHILD",
 			id
 		})
+	}).catch(function(err){
+		console.dir(err)
 	})
 }
 
@@ -53,7 +55,7 @@ export function getWishes(){
 	})
 }
 export function createReward(reward, points){
-	api.post('parent/reward', {description:reward, points:points})
+	api.post('parent/reward', {name:reward, points:points})
 	.then(function(response){
 		console.log("createReward", response)
 		store.dispatch({
@@ -122,7 +124,7 @@ export function deleteWish(id){
 }
 
 export function makeAWish(description){
-	api.post('/child/wishlist', {description:description}).then(function(response){
+	api.post('/child/wishlist', {name:description}).then(function(response){
 		console.log("Make a Wish", response)
 		store.dispatch({
 			type:"ADD_WISH",
@@ -130,6 +132,28 @@ export function makeAWish(description){
 		})
 	}).catch(function(err){
 		console.dir(err)
+	})
+}
+
+export function wishGranted(childId, rewardId, points){
+	api.put(`/parent/child/${childId}/wishlist/${rewardId}`,{points:points}).then(function(response){
+		console.log("WishGranted", response)
+		store.dispatch({
+			type:"GRANT_WISH",
+			wish:response.data,
+			id:rewardId
+		})
+	})
+}
+
+export function getChildWish(id){
+	api.get(`parent/child/${id}/wishlist`).then(function(response){
+		console.log("getChildren'swishes", response)
+		store.dispatch({
+			type:"GET_CHILD_WISH",
+			wishes:response.data
+
+		})
 	})
 }
 
@@ -178,6 +202,8 @@ export function createChild(phone, email, name, pw, username){
 			type:"ADD_CHILD",
 			child:response.data
 		})
+
+		localStorage.setItem("ChildIdforDefault", response.data.id)
 	}).catch(function(err){
 		console.dir(err)
 	})
@@ -302,12 +328,12 @@ export function getPoints(){
 	})
 }
 
-export function deductPointsChild(points){
-	api.put('/child/deduct', {points:points}).then(function(response){
+export function deductPointsChild(id, points){
+	api.put(`/child/reward/${id}/deduct`).then(function(response){
 		console.log("childdeduct", response)
 		store.dispatch({
 			type:"DEDUCT_CHILD",
-			points:response.data
+			points:points
 
 		})
 	}).catch(function(err){

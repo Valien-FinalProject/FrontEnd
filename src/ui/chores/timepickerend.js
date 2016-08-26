@@ -17,6 +17,7 @@ export default class TimePickerEnd extends React.Component {
     return (
       <div>
         <TimePicker
+          style={{color:"white", fontFamily:"Chalky"}}
           format="ampm"
           hintText="End Time"
           value={this.state.value12}

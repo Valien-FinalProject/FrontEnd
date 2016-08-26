@@ -6,7 +6,7 @@ const Current = React.createClass({
   render: function () {
     return (
       <div>
-      	<h1>CURRENT CHORES</h1>
+      	<h1>CURRENT</h1>
 	      	<ul>
 		      	{this.props.current.map(function(item){
 		      		return <li key={item.id}>{item.name}   </li>
