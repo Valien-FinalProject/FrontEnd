@@ -11,7 +11,7 @@ import {getChildren, handleValue, getParentCurrentChoresById,getParentCompleteCh
 import Cookie from 'js-cookie'
 
 const div3 ={
-  backgroundColor:"rgba(0,145,0,.3)",
+  // backgroundColor:"rgba(0,145,0,.3)",
   overflow:"auto",
   color:"white",
   fontFamily:"Chalky",
@@ -75,7 +75,7 @@ const parentLanding =  React.createClass({
           <span>Toggle Child:</span>
           <RadioButtonGroup style={radioStyle} name="children" defaultSelected={Number(localStorage.getItem('ChildIdforDefault'))} onChange={(e, value) => this.handleChange(e, value)}> 
           {this.props.children.map(function(item, i){
-            return <RadioButton inputStyle={{borderColor:"white", color:"white"}} labelStyle={{color:"white", fontFamily:"Chalky", marginLeft:0}} key={i} value={item.id} label={item.name}  />
+            return <RadioButton inputStyle={{borderColor:"white", color:"white"}} labelStyle={{color:"white", fontFamily:"Chalky", marginLeft:0}} key={i} value={item.id} label={(item.name).toUpperCase()}  />
           })}
           </RadioButtonGroup>
         </div>
@@ -83,14 +83,7 @@ const parentLanding =  React.createClass({
       	<div style={div3} className="landingBox">
       		<Current value={this.state.value} />
       	</div>
-        <div style={div2} className="landingBox">
-          <Pending value={this.state.value} />
-        </div>
-        <div style={div1} className="landingBox">
-          <Complete value={this.state.value} />
-        </div>
-      	
-        <button onClick={this.handleClick}> Cookie Test</button>
+        
       </div>
       </div>
     )
@@ -106,3 +99,13 @@ const stateToProps = function(state){
 }
 
 export default connect(stateToProps)(parentLanding)
+
+
+// <div style={div2} className="landingBox">
+        //   <Pending value={this.state.value} />
+        // </div>
+        // <div style={div1} className="landingBox">
+        //   <Complete value={this.state.value} />
+        // </div>
+        
+        // <button onClick={this.handleClick}> Cookie Test</button>

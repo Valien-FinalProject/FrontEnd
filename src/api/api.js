@@ -485,6 +485,17 @@ export function deleteChore(id){
 	})
 }
 
+export function deleteWishParent(childId, rewardId){
+	api.delete(`/parent/child/${childId}/wishlist/${rewardId}`).then(function(response){
+		store.dispatch({
+			type:"DELETE_PARENT_WISH",
+			id:rewardId
+		})
+	}).catch(function(err){
+		console.dir(err)
+	})
+}
+
 
 
 

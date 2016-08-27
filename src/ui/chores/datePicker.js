@@ -9,7 +9,17 @@ const optionsStyle = {
   maxWidth: 255,
   marginRight: 'auto',
 };
-
+const styles ={
+  hintStyle:{
+    color:fullWhite
+  },
+  inputStyle:{
+    color:fullWhite
+  }
+}
+const style={
+  backgroundImage:"url(assets/images/chalkboard2.jpg)"
+}
 export default class DateSelector extends React.Component {
   constructor(props) {
     super(props);
@@ -53,26 +63,26 @@ export default class DateSelector extends React.Component {
     return (
       <div>
         <div style={optionsStyle}>
-          <div style={{borderBottom:"1px solid green", marginBottom:10}}>
+          <div style={{color:fullWhite, marginBottom:10}}>
             <DatePicker
+              hintStyle={{color:"white"}}
               defaultDate={this.state.minDate}
-              textFieldStyle={{fontFamily:"Chalky", color:fullWhite !important}}
+              textFieldStyle={style}
               name="startDate"
               onChange={this.handleChangeMinDate}
               autoOk={this.state.autoOk}
-              floatingLabelText="Start Date"
               disableYearSelection={this.state.disableYearSelection}
             />
             {/*<TimePickerStart />*/}
           </div>  
-          <div style={{borderBottom:"1px solid red", marginBottom:10}}>
+          <div style={{marginBottom:10}}>
             <DatePicker
+              fullWidth={true}
               style={{color:"white"}}
-              textFieldStyle={{color:"white"}}
+              textFieldStyle={styles.inputStyle}
               name="endDate"
               onChange={this.handleChangeMaxDate}
               autoOk={this.state.autoOk}
-              floatingLabelText="End Date"
               defaultDate={this.state.maxDate}
               disableYearSelection={this.state.disableYearSelection}
             />

@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton';
 import Checkbox from 'material-ui/Checkbox'
-
+import {browserHistory} from 'react-router'
 import {register} from 'api/api'
 
 const style ={
@@ -47,7 +47,8 @@ export default React.createClass({
   handleSubmit:function(e){
     e.preventDefault();
     register(this.state.email, this.state.eopt, this.state.name, this.state.pw,this.state.phone, this.state.popt, this.state.username)
-    this.setState({email:"",eopt:"",name:"",pw:"",phone:"",popt:"",username:""})
+    this.setState({value:""})
+    browserHistory.push("/landing")
   },
   render: function () {
     console.log(this.state)
@@ -56,7 +57,7 @@ export default React.createClass({
 
       	<form onSubmit={this.handleSubmit} style={{width:"33%", margin:"auto"}}>
       		<h2>Register</h2>
-      		<TextField onChange={this.handleChange} name="username" hintText="Username" /><br />
+      		<TextField onChange={this.handleChange} name="username" hintText="Username" value={this.state.value}/><br />
           <TextField onChange={this.handleChange} name="name" hintText="Actual Name"/><br />
       		<TextField onChange={this.handleChange} name="pw" hintText="Password" type="password"/><br />
           <TextField onChange={this.handleChange} name="email" hintText="Email" type="email" /><br />

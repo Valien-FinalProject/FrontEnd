@@ -34,10 +34,11 @@ import Profile from 'ui/profile/profile'
 import Chore from 'ui/chores/createChore'
 import Progress from 'ui/parentProgress/progress'
 import Calendar from 'ui/calendar'
-import Reward from 'ui/rewards/addReward'
+import Creater from 'ui/addToParent/parentHolder'
 import ViewReward from 'ui/rewards/viewRewards'
 import Home from 'ui/home'
-import CreateChild from 'ui/createchild'
+import Child from 'ui/parentChild/createchild'
+
 
 
 
@@ -76,11 +77,10 @@ const Site = (
 		      	<Route path="/calendar" component={Calendar} />
 		        <Route path="/landing" component={Landing} />
 		        <Route path="/settings" component={Profile} />
-		        <Route path="/createChore" component={Chore}/>
 		        <Route path="/progress" component={Progress} />
-		        <Route path="/createReward" component={Reward} />
+		        <Route path="/creator" component={Creater} />
 		        <Route path="/viewRewards" component={ViewReward} />
-		        <Route path="/createChild" component={CreateChild} />
+		        <Route path="/childSettings" component={Child}/>
 		      </Route>
 	    </Router>
 	</Provider>

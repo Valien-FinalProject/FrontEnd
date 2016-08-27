@@ -15,8 +15,9 @@ a{
 	color:blue	;
 }
 body{
-	font-family: "Roboto", sans-serif;
+	font-family: "Chalky", sans-serif;
 	background-image:url('../images/chalkboard2.jpg');
+	color:white;
 
 }
 
@@ -80,7 +81,7 @@ ul{
 }
 .deny{
 	width:23px;
-	background-color: rgb(0,233,233);
+	background-color: rgb(0,233,233)
 }
 
 #homeContainer{
@@ -108,17 +109,15 @@ input[type='radio'] {
 	right:0;
 	top:0;
 	bottom:0;
-
-
-
 }
 
-//ORIGINALLY in Child REWARDS
-// <ul style={{paddingLeft:0}}> 
-//          {this.props.rewards.map(function(reward){
-//             return <li key={reward.id}><span style={{marginRight:10}}>Description: {reward.description}</span> <span style={{marginRight:10}}>Points:{reward.points}</span><RaisedButton style={{marginRight:0}} onTouchTap={(e) =>this.cashIn(reward.points)} label="Cash In" /></li>
-//           }.bind(this))}
-          
-//         </ul>
 
+.rewardPTable{
+	background-image: url('../images/chalkboard3.jpg');
+	color:white;
+	font-size: 22px;
+}
 
+#startDate-undefined-undefined-17933{
+	color:white;
+}

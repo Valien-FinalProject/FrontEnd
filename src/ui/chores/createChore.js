@@ -10,9 +10,18 @@ import DateSelector from 'ui/chores/datePicker'
 import Frequency from 'ui/chores/frequency'
 import Children from 'ui/chores/children'
 
+import {lightWhite, fullWhite} from 'material-ui/styles/colors'
+
 
 const hintStyle ={
-  color:"white",
+  color:lightWhite,
+  fontFamily:"Chalky",
+  fontSize:24
+}
+
+const inputStyle={
+  fontSize:24,
+  color:fullWhite,
   fontFamily:"Chalky"
 }
 
@@ -83,15 +92,20 @@ export default React.createClass({
     
     console.log(Object.keys(this.state.id).length)
     return (
-      <div style={{color:"white", fontFamily:"Chalky"}}>
-      <form onSubmit={this.handleSubmit}>
-      	<div><TextField name="name" hintStyle={hintStyle} onChange={this.handleChange} floatingLabelFixed={true} floatingLabelText="Chore Name" hintText="New Chore" /></div>
-        <div><TextField name="description" hintStyle={hintStyle} onChange={this.handleChange} floatingLabelFixed={true} floatingLabelText="Chore Description" hintText="Description" multiLine={true} rows={1} rowsMax={3}/> </div>
-      	<div><TextField name="value" hintStyle={hintStyle} onChange={this.handleChange} floatingLabelFixed={true} floatingLabelText="Point Value" hintText="Points" type="number" min="1" max="10000" /></div>
+      <div style={{color:"white", fontFamily:"Chalky", width:"50%"}}>
+        <h1 style={{marginLeft:20}}> Create Chore</h1>
+        <div style={{height:40, width:"100%"}} />
+      <form style={{width:"65%", marginLeft:20}} ref="chores" onSubmit={this.handleSubmit}>
+      	<div><TextField fullWidth={true} name="name" inputStyle={inputStyle} hintStyle={hintStyle} onChange={this.handleChange}  hintText="New Chore" /></div>
+        <div style={{height:30, width:"100%"}} />
+        <div><TextField fullWidth={true} name="description" inputStyle={inputStyle} hintStyle={hintStyle} onChange={this.handleChange}  hintText="Description" /> </div>
+        <div style={{height:30, width:"100%"}} />
+      	<div><TextField fullWidth={true} name="value" inputStyle={inputStyle} hintStyle={hintStyle} onChange={this.handleChange}  hintText="Points" type="number" min="1" max="10000" /></div>
+        <div style={{height:30, width:"100%"}} />
       	<DateSelector getMinDate={this.getMinDate} getMaxDate={this.getMaxDate} />
-      	<div>Assign Frequency: <Frequency getFrequency={this.getFrequency} /> </div>
+      	<div>Assign Frequency: <div style={{height:10, width:"100%"}} /> <Frequency getFrequency={this.getFrequency} /> </div>
       	<Children getChildrenId={this.getChildrenId} />
-      	<RaisedButton style={{marginTop:20}} backgroundColor="green" type="submit">Submit </RaisedButton>
+      	<RaisedButton style={{marginTop:20}} type="submit">Submit </RaisedButton>
       </form>
 
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import Checkbox from 'material-ui/Checkbox'
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import {lightWhite, fullWhite} from 'material-ui/styles/colors'
 
 const style={
 	display:"inline"
@@ -8,6 +9,12 @@ const style={
 const rbstyle={
 	display:"flex",
 	flexDirection:"row"
+}
+
+const labelStyle={
+	color:fullWhite,
+	fontSize:20,
+	fontFamily:"Chalky"
 }
 
 export default React.createClass({
@@ -45,14 +52,14 @@ export default React.createClass({
   },
   render: function () {
     return (
-      <div style={{display:"flex", flexDirection:"row", width:55, marginRight:3}}>
-	      <Checkbox onCheck={(e, isChecked) => this.handleCheck("m", isChecked)} name="m" labelPosition={'left'} label="M" />
-	      <Checkbox onCheck={(e, isChecked) => this.handleCheck("tu", isChecked)} labelPosition={'left'} label="Tu" />
-	      <Checkbox onCheck={(e, isChecked) => this.handleCheck("we", isChecked)} labelPosition={'left'} label="W" />
-	      <Checkbox onCheck={(e, isChecked) => this.handleCheck("th", isChecked)}  labelPosition={'left'} label="Th" />
-	      <Checkbox onCheck={(e, isChecked) => this.handleCheck("f", isChecked)}  labelPosition={'left'} label="F" />
-	      <Checkbox onCheck={(e, isChecked) => this.handleCheck("sa", isChecked)}  labelPosition={'left'} label="Sa" />
-	      <Checkbox onCheck={(e, isChecked) => this.handleCheck("su", isChecked)}  labelPosition={'left'} label="Su" />
+      <div style={{display:"flex", flexDirection:"row", width:55, marginRight:3, marginLeft:2}}>
+	      <Checkbox onCheck={(e, isChecked) => this.handleCheck("m", isChecked)}  labelStyle={labelStyle} name="m" labelPosition={'left'} label="M " />
+	      <Checkbox onCheck={(e, isChecked) => this.handleCheck("tu", isChecked)} labelStyle={labelStyle} labelPosition={'left'} label="TU " />
+	      <Checkbox onCheck={(e, isChecked) => this.handleCheck("we", isChecked)} labelStyle={labelStyle} labelPosition={'left'} label="W " />
+	      <Checkbox onCheck={(e, isChecked) => this.handleCheck("th", isChecked)} labelStyle={labelStyle} labelPosition={'left'} label="TH " />
+	      <Checkbox onCheck={(e, isChecked) => this.handleCheck("f", isChecked)}  labelStyle={labelStyle} labelPosition={'left'} label="F " />
+	      <Checkbox onCheck={(e, isChecked) => this.handleCheck("sa", isChecked)} labelStyle={labelStyle} labelPosition={'left'} label="SA " />
+	      <Checkbox onCheck={(e, isChecked) => this.handleCheck("su", isChecked)} labelStyle={labelStyle} labelPosition={'left'} label="SU " />
 
       </div>
     )

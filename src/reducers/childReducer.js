@@ -23,6 +23,10 @@ export default function (state=childInitialState, action){
 			return{...state, wishes:state.wishes.filter(function(item){
 				return item.id !== action.id
 			})}
+		case "DELETE_PARENT_WISH":
+			return{...state, wishes:state.wishes.filter(function(item){
+				return item.id !== action.id
+			})}
 		case "TOGGLE_LANDING":
 			return{...state, value:action.value}
 		case "GET_POINTS":

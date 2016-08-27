@@ -1,7 +1,7 @@
 import React from 'react';
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
-import {wishGranted} from 'api/api'
+import {wishGranted, deleteWishParent } from 'api/api'
 
 export default React.createClass({ 
   getInitialState:function(){
@@ -16,7 +16,8 @@ export default React.createClass({
   handleAssign:function(e){
   	wishGranted(this.props.val, e, this.state.value)
   },
-  handleDeny:function(){
+  handleDeny:function(e){
+    deleteWishParent(this.props.val, e)
 
   },
   render: function () {
@@ -27,7 +28,7 @@ export default React.createClass({
 
 		  <TextField type="number" name="points" onChange={this.handleChange} hintText="Assign Points" />
           <RaisedButton onTouchTap={(e) => this.handleAssign(this.props.id)} type="submit" backgroundColor="rgba(0,128,0,.4)" name="approve" label="approve"/>
-          <RaisedButton onTouchTap={this.handleDeny} className="deny" type="submit" backgroundColor="rgba(255,0,0,.4)" name="deny" label="deny" />
+          <RaisedButton onTouchTap={(e) => this.handleDeny(this.props.id)} className="deny" type="submit" backgroundColor="rgba(255,0,0,.4)" name="deny" label="deny" />
 
 
       </div>
