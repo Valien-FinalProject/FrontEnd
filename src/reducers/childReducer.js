@@ -35,6 +35,8 @@ export default function (state=childInitialState, action){
 			return{...state, points:state.points + action.points}
 		case "REMOVE_POINTS":
 			return{...state, points:state.points - action.points}
+		case "GET_CHILD_POINTS":
+			return{...state, points:action.points}
 		case "DEDUCT_CHILD":
 			return{...state, points:state.points - action.points}
 		default:

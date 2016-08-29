@@ -111,6 +111,8 @@ export function getRewardsById(id){
 	})
 }
 
+
+
 export function deleteWish(id){
 	api.delete(`/child/delete/wishlist/${id}`).then(function(response){
 		console.log("deleter", response)
@@ -210,6 +212,15 @@ export function login(username, password){
 		browserHistory.push("/landing");
 	}).catch(function(err){
 		console.dir(err)
+	})
+}
+
+export function getChildPoints(){
+	api.get(`parent/child/${id}/points`).then(function(response){
+		store.dispatch({
+			type:"GET_CHILD_POINTS",
+			points:response
+		})
 	})
 }
 
@@ -323,6 +334,16 @@ export function addPoints(id, points){
 		console.dir(err)
 	})
 }
+export function addPointsViaPath(id, newPoint){
+	api.put(`/parent/add/${newPoint}/child/${id}`).then(function(response){
+		store.dispatch({
+			type:"ADD_POINTS",
+			points:response.data
+			
+		})
+	})
+}
+
 
 export function removePoints(id, points){
 	api.put(`/parent/deduct/child/${id}`, {points:points}).then(function(response){

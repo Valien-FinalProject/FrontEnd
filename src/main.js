@@ -74,7 +74,6 @@ const Site = (
 		     <Route path="/register" component={Register} />
 		     <Route path="/parentLogin" component={ParentLogin} />
 		      <Route component={ParentLayout}>
-		      	<Route path="/calendar" component={Calendar} />
 		        <Route path="/landing" component={Landing} />
 		        <Route path="/settings" component={Profile} />
 		        <Route path="/progress" component={Progress} />

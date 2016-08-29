@@ -74,7 +74,9 @@ const ChildCreator = React.createClass({
   	  		
     		</form>
         </div>
+
         <div style={{width:"50%"}}>
+        <h1> Remove Child </h1>
           <ul>
             {this.props.children.map(function(child){
               return <Deleter key={child.id} id={child.id} name={child.name} />

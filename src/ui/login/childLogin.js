@@ -3,12 +3,26 @@ import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton';
 import {Link} from 'react-router'
 import {childLogin} from 'api/api'
+import {lightWhite, fullWhite} from 'material-ui/styles/colors'
 
 const style ={
-	float:"right",
-  display:"inline",
-  width:"35%"
+	width:"66%",
+  margin:"auto"
 }
+const hintStyle={
+  color:lightWhite,
+  fontSize:24,
+  fontFamily:"Chalky"
+
+}
+
+const inputStyle={
+  color:fullWhite,
+  fontSize:24,
+  fontFamily:"Chalky"
+}
+
+
 export default React.createClass({
   getInitialState:function(){
     return{
@@ -27,17 +41,16 @@ export default React.createClass({
 
   },
   render: function () {
-    return (
-      <div style={style} >
-        <Link to="/childLanding">Login </Link>
+    return(
+    <div style={style} >
 
-      	<form onSubmit={this.handleSubmit} >
-          <h2>Child Login</h2>
-      		<TextField onTouchTap={this.handleChange} name="username" hintText="Username" /><br />
-      		<TextField onTouchTap={this.handleChange} name="password" hintText="Password" type="password"/><br />
-      		<RaisedButton type="submit" label="Login" />
+        <form autoComplete="off" style={{width:"50%", margin:"auto"}} onSubmit={this.handleSubmit}>
+          <h2 style={{fontSize:40, textAlign:"center", marginBttom:75}} >Child Login</h2>
+          <TextField autoComplete="off" inputStyle={inputStyle} hintStyle={hintStyle} fullWidth={true} name="username" onChange={this.handleChange} hintText="Username" /><br />
+          <TextField autoComplete="off" inputStyle={inputStyle} hintStyle={hintStyle} fullWidth={true} name="password" onChange={this.handleChange} hintText="Password" type="password"/><br />
+          <RaisedButton style={{marginTop:30}} type="submit" label="Enter" />
 
-      	</form>
+        </form>
 
 
       </div>

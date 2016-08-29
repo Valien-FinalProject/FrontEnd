@@ -67,6 +67,7 @@ export default React.createClass({
           <RaisedButton onTouchTap={this.clearFields} style={{margin:"auto"}}type="submit" label="Add Reward" />
         </form>
       <p style={this.state.appear}>{counter} : {counter === 1 ? "Reward" : "Rewards"} Created </p>
+
     </div>
     )
   }

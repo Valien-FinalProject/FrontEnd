@@ -3,10 +3,26 @@ import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton';
 import {login} from 'api/api'
 import {connect} from 'react-redux'
+import {lightWhite, fullWhite} from 'material-ui/styles/colors'
 
 const style ={
-	textAlign:"center"
+  margin:"auto",
+  width:"66%"
+} 
+
+const hintStyle={
+  color:lightWhite,
+  fontSize:24,
+  fontFamily:"Chalky"
+
 }
+
+const inputStyle={
+  color:fullWhite,
+  fontSize:24,
+  fontFamily:"Chalky"
+}
+
 export default React.createClass({
   getInitialState:function(){
     return{
@@ -32,11 +48,11 @@ export default React.createClass({
     return (
       <div style={style} >
 
-      	<form autoComplete="off" onSubmit={this.handleSubmit}>
-          <h2>Parent Login</h2>
-      		<TextField autoComplete="off" name="username" onChange={this.handleChange} hintText="Username" /><br />
-      		<TextField autoComplete="off" name="password" onChange={this.handleChange} hintText="Password" type="password"/><br />
-      		<RaisedButton type="submit" label="Enter" />
+      	<form autoComplete="off" style={{width:"50%", margin:"auto"}} onSubmit={this.handleSubmit}>
+          <h2 style={{fontSize:40, textAlign:"center", marginBttom:75}} >Parent Login</h2>
+      		<TextField autoComplete="off" inputStyle={inputStyle} hintStyle={hintStyle} fullWidth={true} name="username" onChange={this.handleChange} hintText="Username" /><br />
+      		<TextField autoComplete="off" inputStyle={inputStyle} hintStyle={hintStyle} fullWidth={true} name="password" onChange={this.handleChange} hintText="Password" type="password"/><br />
+      		<RaisedButton style={{marginTop:30}} type="submit" label="Enter" />
 
       	</form>
 

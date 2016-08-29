@@ -103,7 +103,6 @@ export default React.createClass({
       	<div><TextField fullWidth={true} name="value" inputStyle={inputStyle} hintStyle={hintStyle} onChange={this.handleChange}  hintText="Points" type="number" min="1" max="10000" /></div>
         <div style={{height:30, width:"100%"}} />
       	<DateSelector getMinDate={this.getMinDate} getMaxDate={this.getMaxDate} />
-      	<div>Assign Frequency: <div style={{height:10, width:"100%"}} /> <Frequency getFrequency={this.getFrequency} /> </div>
       	<Children getChildrenId={this.getChildrenId} />
       	<RaisedButton style={{marginTop:20}} type="submit">Submit </RaisedButton>
       </form>
@@ -113,3 +112,7 @@ export default React.createClass({
     )
   }
 })
+
+
+
+// <div>Assign Frequency: <div style={{height:10, width:"100%"}} /> <Frequency getFrequency={this.getFrequency} /> </div>

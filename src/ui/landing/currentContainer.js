@@ -11,6 +11,12 @@ const bodyStyle={
 }
 
 const Current = React.createClass({
+  getInitialState:function(){
+    return{
+      startDate:null,
+      endDate:null
+    }
+  },
   render: function () {
     return (
       	<Table style={bodyStyle}  className="tableLanding">
@@ -25,13 +31,13 @@ const Current = React.createClass({
           </TableHeader>
           <TableBody displayRowCheckbox={false}>
             {this.props.current.map(function(chore){
-             return <Single key={chore.id} id={chore.id} name={chore.name} current={"current"} description={chore.description} value={chore.value} />
+             return <Single key={chore.id} id={chore.id} startDate={chore.startDate} endDate={chore.endDate} name={chore.name} current={"current"} description={chore.description} value={chore.value} />
             })}
             {this.props.pending.map(function(chore){
-             return <Single key={chore.id} val={this.props.value} id={chore.id} name={chore.name} pending={"pending"} description={chore.description} value={chore.value} />
+             return <Single key={chore.id} val={this.props.value} startDate={chore.startDate} endDate={chore.endDate} id={chore.id} name={chore.name} pending={"pending"} description={chore.description} value={chore.value} />
             }.bind(this))}
             {this.props.complete.map(function(chore){
-             return <Single key={chore.id} id={chore.id} name={chore.name} complete={"complete"} description={chore.description} value={chore.value} />
+             return <Single key={chore.id} id={chore.id} startDate={chore.startDate} endDate={chore.endDate} name={chore.name} complete={"complete"} description={chore.description} value={chore.value} />
             })}
             
           </TableBody>
