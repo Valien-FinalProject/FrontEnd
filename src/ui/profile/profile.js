@@ -1,53 +1,86 @@
 import React from 'react';
 import Divider from 'material-ui/Divider';
-import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton'
-
-const h1style={
-	textAlign:"center"
-
-}
-
-const paperStyle={
-	width:300,
-	clear:"left",
-	margin:50,
-	display:"inline-block"
-}
-const paperStyle2={
-	width:300,
-	margin:50,
-	display:"inline-block",
-	float:"right"
-}
+import Checkbox from 'material-ui/Checkbox'
+import {updateParent} from 'api/api'
+import {lightWhite, fullWhite} from 'material-ui/styles/colors'
 
 const style={
+	color:lightWhite,
+	fontSize:24,
+	fontFamily:"Chalky"
+}
 
+const inputStyle={
+	color:fullWhite,
+	fontSize:24,
+	fontFamily:"Chalky"
+}
+const labelStyle={
+	color:fullWhite,
+	fontSize:12,
+	fontFamily:"Chalky"
 }
 export default React.createClass({
-	//Create a function that allows user to alter img src
+  getInitialState:function(){
+  	return{
+  		email:"",
+  		eopt:true,
+  		name:"",
+  		password:"",
+  		phone:"",
+  		popt:true,
+  		username:"",
+  		confirm:"",
+  		visible:{display:"none"}
+
+
+  	}
+  },
+  handleChange:function(e){
+  	var newState = Object.assign({}, this.state)
+  	newState[e.target.name] = e.target.value
+  	this.setState(newState)
+
+  },
+  handleCheck:function(name, isChecked){
+  	var newState = Object.assign({}, this.state)
+  	newState[name]= isChecked
+  	this.setState(newState)
+  },
+  handleSubmit:function(e){
+  	e.preventDefault()
+  	if(this.state.confirm !== this.state.password){
+  		this.setState({visible:{display:"block"}})
+  	}else{
+  		updateParent(this.state.email, this.state.eopt, this.state.name, this.state.password, this.state.phone, this.state.popt, this.state.username)
+  	}
+  },
   render: function () {
     return (
-      <div>
-      	<h1 style={h1style}> USERNAME</h1>
-      	<img src="http://www.greeninc.nl/wp-content/uploads/2013/02/081129-Stock-Photo-YvZ-IMG_0238.jpg" width="200px" height="200px"/>
-      	<Paper zDepth={3} style={paperStyle}>
-      		<h1>Update Info</h1>
-		    <TextField hintText="Current PW" style={style} underlineShow={false} />
-		    <Divider />
-		    <TextField hintText="New PW" type="password" style={style} underlineShow={false} />
-		    <Divider />
-		    <TextField hintText="Confirm New" type="password" style={style} underlineShow={false} />
-		    <Divider />
-		    <TextField hintText="Email address" type="email" style={style} underlineShow={false} />
-		    <Divider />
-		    <TextField hintText="Phone" type="tel" style={style} underlineShow={false} />
-		    <Divider />
-		    <RaisedButton type="submit" label="Update" />
+      <div style={{width:"50%"}}>
 
-		</Paper>
-
+      	<form style={{width:"65%", marginLeft:20}} onSubmit={this.handleSubmit} >
+      	      	
+      		<h1>Update Parent Info</h1>
+		    <TextField onChange={this.handleChange}  name="username" inputStyle={inputStyle} hintText="Username" hintStyle={style} underlineShow={false} />
+		    <Divider />
+		    <TextField onChange={this.handleChange}  name="name" inputStyle={inputStyle} hintText="Name" hintStyle={style} underlineShow={false} />
+		    <Divider />
+		    <TextField onChange={this.handleChange} type="password" inputStyle={inputStyle} name="password" hintText="New PW" type="password" hintStyle={style} underlineShow={false} />
+		    <Divider />
+		    <TextField onChange={this.handleChange} type="password" inputStyle={inputStyle} name="confirm" hintText="Confirm New" type="password" hintStyle={style} underlineShow={false} />
+		    <Divider />
+		    <TextField onChange={this.handleChange} name="email" inputStyle={inputStyle} hintText="Email address" type="email" hintStyle={style} underlineShow={false} />
+		    <Divider />
+		    <TextField onChange={this.handleChange} name="phone" inputStyle={inputStyle} hintText="Phone" type="tel" hintStyle={style} underlineShow={false} />
+		    <Divider />
+		    <Checkbox onCheck={(e,isChecked) => this.handleCheck("eopt", isChecked)} labelStyle={labelStyle} name="eopt" style={{fontSize:12, width:250}} label="Check to receive email notifications" labelPosition={'left'} defaultChecked={true} />
+      		<Checkbox onCheck={(e,isChecked) => this.handleCheck("popt", isChecked)} labelStyle={labelStyle} name="popt" style={{fontSize:12, width:250}} label="Check to receive email notifications" labelPosition={'left'} defaultChecked={true} /> 
+ 		    <RaisedButton style={{marginTop:20}} type="submit" label="Update" />
+		</form>
+			<p style={this.state.visible}>PASSWORDS DON'T MATCH</p>
       </div>
     )
   }

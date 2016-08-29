@@ -7,7 +7,8 @@ import ShowWishlist from 'ui/wishlist/showwishlist'
 const style={
 	display:"flex",
 	flexDirection:'row',
-	width:"100%"
+	width:"80%",
+  margin:"auto"
 }
 export default React.createClass({
   render: function () {

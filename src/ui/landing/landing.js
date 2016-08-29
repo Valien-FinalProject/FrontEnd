@@ -8,7 +8,8 @@ import RaisedButton from 'material-ui/RaisedButton'
 import {connect} from 'react-redux'
 import {getChildren, handleValue, getParentCurrentChoresById,getParentCompleteChoresById,
  getParentPendingChoresById} from 'api/api'
-import Cookie from 'js-cookie'
+import {fullWhite} from 'material-ui/styles/colors'
+
 
 const div3 ={
   // backgroundColor:"rgba(0,145,0,.3)",
@@ -17,20 +18,6 @@ const div3 ={
   fontFamily:"Chalky",
 }
 
-const div2 ={
-  backgroundColor:"rgba(255,255,0,.3)",
-  overflow:"auto", 
-  color:"white",
-  fontFamily:"Chalky"
-
-}
-const div1 ={
-  backgroundColor:"rgba(255,0,0,.3)",
-  overflow:"auto",
-  color:"white",
-  fontFamily:"Chalky"
-
-}
 const radioStyle={
   display:"flex",
   flexDirection:"row",
@@ -46,16 +33,12 @@ const parentLanding =  React.createClass({
     }
   },
   componentWillMount:function(){
-    console.log(Cookie.get())
     getChildren()
     var x = Number(localStorage.getItem('ChildIdforDefault'))
     getParentCurrentChoresById(x)
     getParentCompleteChoresById(x)
     getParentPendingChoresById(x)
     
-  },
-    handleClick:function(){
-    cookieGetter()
   },
   handleChange:function(e, value){
     this.setState({
@@ -83,9 +66,15 @@ const parentLanding =  React.createClass({
       	<div style={div3} className="landingBox">
       		<Current value={this.state.value} />
       	</div>
-        
       </div>
-      </div>
+    <div style={{position:"static", bottom:0, left:0, height:30, width:208, marginTop:20, border:"1px solid white"}}>
+      <p style={{display:"inline-block", marginTop:4, marginBottom:4}} >KEY: &nbsp; </p>
+      <span style={{backgroundColor:"rgba(255,255,0,.2)", padding:2, color:fullWhite, width:100, height:40, marginRight:5}}> Pending</span>
+      <span style={{backgroundColor:"rgba(255,0,0,.2)", padding:2, color:fullWhite, width:100, height:40}}> Complete</span>
+
+    </div>
+
+    </div>
     )
   }
 

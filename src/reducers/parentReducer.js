@@ -16,6 +16,8 @@ export default function (state = parentInitialState, action){
 			return{...state, children:state.children.filter(function(child){
 				return child.id !== action.id
 			})}
+		case "UPDATE_PARENT":
+			return{...state, parent:action.parent}
 		default:
 			return state;
 	}

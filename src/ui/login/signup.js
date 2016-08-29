@@ -57,7 +57,7 @@ export default React.createClass({
 
       	<form onSubmit={this.handleSubmit} style={{width:"33%", margin:"auto"}}>
       		<h2>Register</h2>
-      		<TextField onChange={this.handleChange} name="username" hintText="Username" value={this.state.value}/><br />
+      		<TextField onChange={this.handleChange} name="username" hintText="Username"/><br />
           <TextField onChange={this.handleChange} name="name" hintText="Actual Name"/><br />
       		<TextField onChange={this.handleChange} name="pw" hintText="Password" type="password"/><br />
           <TextField onChange={this.handleChange} name="email" hintText="Email" type="email" /><br />

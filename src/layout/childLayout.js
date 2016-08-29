@@ -62,8 +62,9 @@ export default React.createClass({
                 className="fa fa-sign-out"
                 />
             </FloatingActionButton>
-
           </div>
+            <span style={{fontSize:24}}>USERNAME: {localStorage.getItem("childUN")}</span>
+          
           {this.props.children}
         </div>
     )

@@ -30,7 +30,7 @@ import ChildLayout from 'layout/childLayout'
 // Parent UI
 
 import Landing from 'ui/landing/landing';
-import Profile from 'ui/profile/profile'
+import Profile from 'ui/profile/parentProfileHolder'
 import Chore from 'ui/chores/createChore'
 import Progress from 'ui/parentProgress/progress'
 import Calendar from 'ui/calendar'

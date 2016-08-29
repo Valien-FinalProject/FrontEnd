@@ -25,10 +25,11 @@ const button={
 	marginLeft:20
 	
 }
+var setVal = localStorage.getItem("ChildIdforDefault")
 const Wishlist = React.createClass({
   getInitialState:function(){
     return{
-      val:0,
+      val:setVal,
     }
   },
   componentWillMount:function(){
@@ -50,12 +51,12 @@ const Wishlist = React.createClass({
       	<h1> Items on your children's wishlist </h1>
       	<RadioButtonGroup style={radioStyle} name="children" onChange={(e, value) => this.handleChange(e, value)} defaultSelected={Number(localStorage.getItem('ChildIdforDefault'))} >
       		{this.props.children.map(function(item, i){
-            return <RadioButton key={item.id} value={item.id} label={item.name} />
+            return <RadioButton labelStyle={{color:"white", fontFamily:"Chalky", marginLeft:0}} key={item.id} value={item.id} label={(item.name).toUpperCase()} />
           })}
       	</RadioButtonGroup>
 
       	
-      		<p style={{marginRight:20}}>Wishlist {this.props.wishes.length === 1 ? "item" : "items" } </p> 
+      		<p style={{marginRight:20, fontSize:30}}>Wishlist {this.props.wishes.length === 1 ? "item" : "items" } </p> 
          <ul>
           {this.props.wishes.map(function(item){
           return <Wish key={item.id} id={item.id} name={item.name} url={item.url} val={this.state.val} image={item.imageUrl} />

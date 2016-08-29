@@ -38,12 +38,12 @@ export default React.createClass({
   componentWillMount:function(){
   	if(this.props.pending){
   		this.setState({
-  			color:"yellow",
+  			color:"rgba(255,255,0,.15)",
   			style:{}
   		})
   	}else if(this.props.complete){
   		this.setState({
-  			color:"red",
+  			color:"rgba(255,0,0,.15)",
   			style:{display:"none"}
   		})
   	}else{

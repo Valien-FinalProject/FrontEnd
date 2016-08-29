@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import {wishGranted, deleteWishParent } from 'api/api'
+import {lightWhite, fullWhite} from 'material-ui/styles/colors'
 
 export default React.createClass({ 
   getInitialState:function(){
@@ -22,13 +23,13 @@ export default React.createClass({
   },
   render: function () {
     return (
-      <div>
+      <div style={{border:"3px solid white", width:"90%", margin:"auto", marginTop:15}}>
 
-      		<li>{this.props.name}<a href={this.props.url}><img src={this.props.image}/></a></li>
+      		<li><p style={{display:"inline-block",marginRight:50, fontSize:24}}>Wish: {this.props.name}</p><a href={this.props.url}><img style={{marginTop:5}} src={this.props.image}/></a></li>
 
-		  <TextField type="number" name="points" onChange={this.handleChange} hintText="Assign Points" />
-          <RaisedButton onTouchTap={(e) => this.handleAssign(this.props.id)} type="submit" backgroundColor="rgba(0,128,0,.4)" name="approve" label="approve"/>
-          <RaisedButton onTouchTap={(e) => this.handleDeny(this.props.id)} className="deny" type="submit" backgroundColor="rgba(255,0,0,.4)" name="deny" label="deny" />
+		  <TextField type="number" name="points" hintStyle={{color:fullWhite, fontSize:20, fontFamily:"Chalky"}} inputStyle={{color:fullWhite, fontSize:20, fontFamily:"Chalky"}} onChange={this.handleChange} hintText="Assign Points" />
+          <RaisedButton onTouchTap={(e) => this.handleAssign(this.props.id)} type="submit" name="approve" label="approve"/>
+          <RaisedButton onTouchTap={(e) => this.handleDeny(this.props.id)} className="deny" type="submit" name="deny" label="deny" />
 
 
       </div>

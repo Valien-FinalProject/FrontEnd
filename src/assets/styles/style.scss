@@ -18,6 +18,8 @@ body{
 	font-family: "Chalky", sans-serif;
 	background-image:url('../images/chalkboard2.jpg');
 	color:white;
+	height:100%;
+	width:100%
 
 }
 
@@ -65,7 +67,7 @@ ul{
 	}
 
 	.landingBox{
-	height:1000px;
+	height:100%;
 	width:100%;
 	// background-image:url('../images/chalkboard2.jpg');
 	overflow:scroll;
@@ -102,7 +104,7 @@ input[type='radio'] {
 }
 
 .parentBG{
-	background-image:url('../images/chalkboard3.jpg');
+	background-image:url('../images/chalkboard2.jpg');
 	position:fixed !important;
 	position: absolute;
 	left:0;
@@ -113,7 +115,7 @@ input[type='radio'] {
 
 
 .rewardPTable{
-	background-image: url('../images/chalkboard3.jpg');
+	background-image: url('../images/chalkboard2.jpg');
 	color:white;
 	font-size: 22px;
 }

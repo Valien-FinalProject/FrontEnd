@@ -173,6 +173,25 @@ export function register(email, eopt, name, pw, phone, popt, username){
 
 }
 
+export function updateParent(email, eopt, name, password, phone, popt, username){
+	api.put(`/parent/profile`, {email:email, emailOptin:eopt, name:name, password:password, phone:phone, phoneOptin:popt, username:username})
+	.then(function(response){
+		console.log("updateParent", response)
+		store.dispatch({
+			type:"UPDATE_PARENT",
+			parent:response.data
+		})
+	}).catch(function(err){
+		console.dir(err)
+	})
+}
+
+export function updateChildProfile(id, email, name, password, phone, username){
+	api.put(`parent/child/${id}`, {email:email, name:name, password:password, phone:phone, username:username}).then(function(response){
+		console.log(response)
+	})
+}
+
 export function cookieGetter(){
 	console.log(Cookie.get())
 	Cookie.get()

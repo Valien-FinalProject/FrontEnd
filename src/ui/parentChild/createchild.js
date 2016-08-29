@@ -4,8 +4,9 @@ import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton'
 import {connect} from 'react-redux'
-import {createChild, getChildren, deleteChild} from 'api/api'
+import {createChild, getChildren} from 'api/api'
 import {lightWhite, fullWhite} from 'material-ui/styles/colors'
+import Deleter from 'ui/parentChild/deleter'
 
 const h1style={
 	textAlign:"center"
@@ -34,8 +35,7 @@ const ChildCreator = React.createClass({
   		name:"",
   		email:"",
   		phone:"",
-  		password:"",
-      visible:{display:"none"}
+  		password:""
   	}
   },
   componentWillMount(){
@@ -50,12 +50,6 @@ const ChildCreator = React.createClass({
   	e.preventDefault();
   	createChild(this.state.phone, this.state.email, this.state.name, this.state.password, this.state.username)
   	this.setState({username:"",name:"",email:"",phone:"",password:""})
-  },
-  askDeleteChild:function(){
-    this.setState({visible:{display:"inline-block", marginLeft:20}})
-  },
-  deleteChild:function(e){
-    deleteChild(e)
   },
   render: function () {
     return (
@@ -83,8 +77,8 @@ const ChildCreator = React.createClass({
         <div style={{width:"50%"}}>
           <ul>
             {this.props.children.map(function(child){
-              return <li key={child.id} style={{width:"30%", fontSize:24}}>{(child.name).toUpperCase()}  <RaisedButton style={{marginLeft:30}} title=":...(" onTouchTap={this.askDeleteChild} label="Remove Child"/> <RaisedButton style={this.state.visible} title=":...(" onTouchTap={(e) => this.deleteChild(child.id)} label="Yes"/></li>
-            }.bind(this))}
+              return <Deleter key={child.id} id={child.id} name={child.name} />
+            })}
           </ul>
         </div>
       </div>
