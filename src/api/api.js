@@ -344,6 +344,15 @@ export function addPointsViaPath(id, newPoint){
 	})
 }
 
+export function deductPointsViaPath(id, newPoint){
+	api.put(`/parent/deduct/${newPoint}/child/${id}`).then(function(response){
+		store.dispatch({
+			type:"DEDUCT_POINTS",
+			points:response.data
+		})
+	})
+}
+
 
 export function removePoints(id, points){
 	api.put(`/parent/deduct/child/${id}`, {points:points}).then(function(response){

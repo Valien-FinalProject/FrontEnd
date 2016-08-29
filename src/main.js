@@ -21,7 +21,7 @@ injectTapEventPlugin();
 
 //Styles
 var style = require('assets/styles/style.scss')
-var calStyle = require('../node_modules/react-big-calendar/lib/css/react-big-calendar.scss')
+// var calStyle = require('../node_modules/react-big-calendar/lib/css/react-big-calendar.scss')
 
 // Layout
 import ParentLayout from 'layout/parentlayout';

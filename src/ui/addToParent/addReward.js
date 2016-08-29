@@ -3,7 +3,8 @@ import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import {createReward} from 'api/api'
 import {lightWhite, fullWhite} from 'material-ui/styles/colors'
-import ReactDOM from 'react-dom';
+import Points from 'ui/addToParent/givepoints'
+
 
 var counter = 0
 
@@ -68,6 +69,7 @@ export default React.createClass({
         </form>
       <p style={this.state.appear}>{counter} : {counter === 1 ? "Reward" : "Rewards"} Created </p>
 
+      <Points />
     </div>
     )
   }
