@@ -1,0 +1,43 @@
+Introduction:
+Hi, I am Nigel, these are my coworker/classmates, Alex, Eduardo('eddyJ9') and Valerie 
+
+Story:
+My youngest son, is awesome but he is lazy.  *my kids aren't here*  
+Sam's club, ton of groceries, all helped except Jalen (sp?), excuses to not work.
+
+I thought, i need to incentivize the problem. 
+
+He, like many people, especially children, needs motivation. 
+
+
+
+
+
+ I am sure that all of you who have children understand that motivating them to do anything, especially something that they may not be naturally motivated to do is not easy.  Fights are started, tears are shed, little is done.  
+
+Growing up there were few things I hated more than mowing the lawns.  It was hot, it was work, it was something that provided me with no tangible benefit. 
+reward based incentives psychology provides 208,000 results.
+In pyschology, there is something called Incentive theory, which argues that external benefits complement natural drive and therefore incentivize people to be more likely to do a certain action. 
+
+In order for these incentives to be reached, one has to know what they are and how they can go about acheieving them.   We believe that through our application we have solved the aforementioned issus.
+
+
+Over the last few weeks the four of us have built an application that allows for easy organization and viewing of chores and rewards.  This organization allows for children to see exactly what they are required to and the exact amount of value they will receieve if the chore is done correctly.  The point based value system allows for a cashing in of rewards, giving them incentive to complete chores, tasks and generally behave in a manner that is beneficial to both the parent and child.  
+
+
+
+
+Chalkboard Chores uses different services that make the process easier, we have external APIs that help children make wishes, services that allow for text and email notification and easy to use Web and Android applications.  
+
+
+
+
+
+
+
+
+
+
+
+
+
