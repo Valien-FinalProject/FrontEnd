@@ -9,6 +9,34 @@ import {saveState} from 'api/localstorage'
 api.new('https://vast-fortress-99365.herokuapp.com')
 //eopt===email optin, popt=== phone optin
 
+export function getParent(id){
+	api.get(`/parent/${id}`).then(function(response){
+		console.log(response)
+		store.dispatch({
+			type:"GET_PARENT",
+			parent:response.data
+		})
+	})
+}
+
+export function getParentEmail(){
+	api.get(`/parent/email`).then(function(response){
+		console.log(response)
+		store.dispatch({
+			type:"GET_EMAIL",
+			email:response.data
+		})
+	})
+}
+
+export function getParentPhone(){
+	api.get(`/parent/phone`).then(function(response){
+		store.dispatch({
+			type:"GET_PHONE",
+			phone:response.data
+		})
+	})
+}
 export function getChildren(){
 	api.get('/parent/children').then(function(response){
 		console.log('getChildren', response)

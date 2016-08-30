@@ -3,8 +3,9 @@ import Divider from 'material-ui/Divider';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton'
 import Checkbox from 'material-ui/Checkbox'
-import {updateParent} from 'api/api'
+import {updateParent, getParent} from 'api/api'
 import {lightWhite, fullWhite} from 'material-ui/styles/colors'
+import {connect} from 'react-redux'
 
 const style={
 	color:lightWhite,
@@ -22,21 +23,27 @@ const labelStyle={
 	fontSize:12,
 	fontFamily:"Chalky"
 }
-export default React.createClass({
+const ProfPar = React.createClass({
   getInitialState:function(){
   	return{
-  		email:"",
+  		email:this.props.email,
   		eopt:true,
-  		name:"",
+  		name:this.props.parent.name,
   		password:"",
-  		phone:"",
+  		phone:this.props.phone,
   		popt:true,
-  		username:"",
+  		username:this.props.parent.username,
   		confirm:"",
   		visible:{display:"none"}
 
 
   	}
+  },
+  componentWillMount:function(){
+
+    console.log("parent", this.props.parent)
+    console.log("email", this.props.email)
+    console.log("phone", this.props.phone)
   },
   handleChange:function(e){
   	var newState = Object.assign({}, this.state)
@@ -93,3 +100,15 @@ export default React.createClass({
     )
   }
 })
+
+const stateToProps = function(state){
+  console.log(state)
+  return{
+    parent:state.parentReducer.parent,
+    phone:state.parentReducer.phone,
+    email:state.parentReducer.email
+  }
+}
+
+
+export default connect(stateToProps)(ProfPar)
