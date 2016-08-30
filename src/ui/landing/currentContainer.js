@@ -21,11 +21,11 @@ const Current = React.createClass({
       	<Table style={bodyStyle}  className="tableLanding">
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow >
-              <TableHeaderColumn style={{fontSize:46, width:"18%", color:lightWhite}}>Chore</TableHeaderColumn>
+              <TableHeaderColumn style={{fontSize:46, width:"15%", color:lightWhite}}>Chore</TableHeaderColumn>
               <TableHeaderColumn style={{fontSize:46, width:"30%", color:lightWhite}}>Description</TableHeaderColumn>
               <TableHeaderColumn style={{fontSize:46, width:"12%", color:lightWhite}}>Points</TableHeaderColumn>
               <TableHeaderColumn style={{fontSize:46, width:"11%", color:lightWhite}}>Deny</TableHeaderColumn>
-              <TableHeaderColumn style={{fontSize:46, width:"12%", color:lightWhite}}>Approve</TableHeaderColumn>
+              <TableHeaderColumn style={{fontSize:46, width:"15%", color:lightWhite}}>Approve</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody displayRowCheckbox={false}>

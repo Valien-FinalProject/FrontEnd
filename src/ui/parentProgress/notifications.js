@@ -9,11 +9,12 @@ const Notifications =  React.createClass({
   render: function () {
     console.log(this.props.rewards, "rewards")
     return (
-      <div style={{width:"50%"}}>
-      	 <h1>Current Points: {this.props.points}</h1>
+      <div style={{width:"50%", borderRight:"1px solid white"}}>
+      	 <h1 style={{textAlign:"center"}}>Current Points: {this.props.points}</h1>
+         <h2 style={{textAlign:"center"}}>Rewards Cashed In</h2>
       	<ul>
       		{this.props.rewards.map(function(reward){
-      			return <li key={reward.id}>{reward.name}----{reward.points}</li>
+      			return <li style={{fontSize:24}} key={reward.id}><p style={{width:200, display:"inline-block"}}>Reward: {reward.name}</p> <p style={{display:"inline-block", marginLeft:50}}>Points: {reward.points}</p></li>
       		})}
 
       	</ul>

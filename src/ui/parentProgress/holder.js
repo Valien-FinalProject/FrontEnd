@@ -9,7 +9,7 @@ export default React.createClass({
 
   render: function () {
     return (
-      <li>{this.props.name}</li>
+      <li style={{listStyle:"none", fontSize:24}}>{this.props.name}</li>
     )
   }
 })
