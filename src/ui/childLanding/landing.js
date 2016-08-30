@@ -2,6 +2,7 @@ import React from 'react';
 import Current from 'ui/childLanding/childCurrent'
 import Pending from 'ui/childLanding/childPending'
 import Complete from 'ui/childLanding/childComplete'
+import Cookie from 'js-cookie'
 
 
 const div3 ={
@@ -16,6 +17,7 @@ const div2 ={
 
 export default React.createClass({
   render: function () {
+    console.log(Cookie.get())
     return (
       <div id="landingPage">
       	<div style={{marginTop:20}} className="landingBox">

@@ -5,15 +5,15 @@ import {getChildPoints} from 'api/api'
 const Notifications =  React.createClass({
   componentWillMount:function(){
     console.log(this.props.value)
-    getChildPoints(10)
   },
   render: function () {
+    console.log(this.props.rewards, "rewards")
     return (
       <div style={{width:"50%"}}>
       	 <h1>Current Points: {this.props.points}</h1>
       	<ul>
       		{this.props.rewards.map(function(reward){
-      			<li key={reward.id}>{reward.description}----{reward.value}</li>
+      			return <li key={reward.id}>{reward.name}----{reward.points}</li>
       		})}
 
       	</ul>

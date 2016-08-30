@@ -1,7 +1,7 @@
 import React from 'react';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import {connect} from 'react-redux'
-import {getChildren, getRewardsById, getParentCompleteChoresById} from 'api/api'
+import {getChildren, getRewardsByIdPath, getParentCompleteChoresById, getChildPoints} from 'api/api'
 import Graph from 'ui/parentProgress/graph'
 import Notifications from 'ui/parentProgress/notifications'
 import ChoresComp from 'ui/parentProgress/choresComp'
@@ -23,13 +23,15 @@ const Progress =  React.createClass({
   },
   componentWillMount:function(){
     getChildren()
+    
   },
   handleChange:function(e, value){
     this.setState({
       value:value
     })
-    // getRewardsById(value)
+    getRewardsByIdPath(value)
     getParentCompleteChoresById(value)
+    getChildPoints(value)
 
   },
   render: function () {

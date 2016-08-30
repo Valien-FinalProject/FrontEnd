@@ -111,6 +111,17 @@ export function getRewardsById(id){
 	})
 }
 
+export function getRewardsByIdPath(id){
+	api.get(`/parent/child/${id}/rewards`).then(function(response){
+		console.log("GetRWDbyID", response)
+		store.dispatch({
+			type:"GET_REWARDS_BY_ID",
+			rewards:response.data
+		})
+	}).catch(function(err){
+		console.dir(err)
+	})
+}
 
 
 export function deleteWish(id){
@@ -217,7 +228,7 @@ export function login(username, password){
 
 export function getChildPoints(id){
 	api.get(`parent/child/${id}/points`).then(function(response){
-		console.log(response)
+		console.log("GCP", response)
 		store.dispatch({
 			type:"GET_CHILD_POINTS",
 			points:response.data

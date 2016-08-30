@@ -13,7 +13,7 @@ const bodyStyle={
   fontFamily:"Chalky",
   color:"white",
   fontSize:32,
-  width:"15%"
+  width:"18%"
 
 }
 const bodyStyle2={
@@ -77,7 +77,7 @@ export default React.createClass({
   render: function () {
         console.log("working?")
         if(this.props.endDate < endDayNum){
-       return (   <TableRow onTouchTap={this.dateFind} style={{lineHeight:"130%", backgroundColor:this.state.color}} > <TableRowColumn title={this.props.name} style={bodyStyle}>{this.props.name}</TableRowColumn><TableRowColumn style={bodyStyle2}>{this.props.description}</TableRowColumn><TableRowColumn style={bodyStyle3}> {this.props.value} </TableRowColumn><TableRowColumn style={{width:"13%"}}><RaisedButton style={this.state.style}  onTouchTap={(e) =>this.denyChore(this.props.id)} label="Deny"/></TableRowColumn><TableRowColumn style={{width:"15%"}}><RaisedButton style={this.state.style} onTouchTap={(e) =>this.approveChore(this.props.id)} label="Approve"/> </TableRowColumn></TableRow>)
+       return (   <TableRow onTouchTap={this.dateFind} style={{lineHeight:"130%", backgroundColor:this.state.color}} > <TableRowColumn title={this.props.name} style={bodyStyle}>{this.props.name}</TableRowColumn><TableRowColumn style={bodyStyle2}>{this.props.description}</TableRowColumn><TableRowColumn style={bodyStyle3}> {this.props.value} </TableRowColumn><TableRowColumn style={{width:"11%"}}><RaisedButton style={this.state.style}  onTouchTap={(e) =>this.denyChore(this.props.id)} label="Deny"/></TableRowColumn><TableRowColumn style={{width:"12%"}}><RaisedButton style={this.state.style} onTouchTap={(e) =>this.approveChore(this.props.id)} label="Approve"/> </TableRowColumn></TableRow>)
         }else{
           return null
         }
