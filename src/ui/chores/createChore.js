@@ -74,9 +74,9 @@ export default React.createClass({
    counter += 1
    this.setState({
       description:"",
-      endDate:{},
+      endDate:endDayVal,
       name:"",
-      startDate:{},
+      startDate:startDayVal,
       num:"",
       counter:{display:"inline-block", marginTop:30, fontSize:24}
    })
