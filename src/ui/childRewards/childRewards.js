@@ -6,6 +6,7 @@ import TestWishes from 'ui/childRewards/testwishes'
 import RaisedButton from 'material-ui/RaisedButton'
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 import Reward from 'ui/childRewards/reward'
+import {lightWhite} from 'material-ui/styles/colors'
 
 const bodyStyle={
   fontFamily:"Chalky",
@@ -29,9 +30,9 @@ const Rewards = React.createClass({
       	<Table style={bodyStyle} selectable={false} className="tableLanding" >
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>
-              <TableHeaderColumn style={{width:"50%", fontSize:52}}>Reward</TableHeaderColumn>
-              <TableHeaderColumn style={{fontSize:52}}>Points</TableHeaderColumn>
-              <TableHeaderColumn style={{fontSize:52}}>Cash In</TableHeaderColumn>
+              <TableHeaderColumn style={{width:"50%", fontSize:52, color:lightWhite}}>Reward</TableHeaderColumn>
+              <TableHeaderColumn style={{fontSize:52, color:lightWhite}}>Points</TableHeaderColumn>
+              <TableHeaderColumn style={{fontSize:52, color:lightWhite}}>Cash In</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody selectable={false} displayRowCheckbox={false}>

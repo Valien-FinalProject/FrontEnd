@@ -1,0 +1,3 @@
+chores not displaying in Android
+
+Star on android breaking app

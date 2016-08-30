@@ -11,7 +11,7 @@ const Wishlister =  React.createClass({
     return (
     	<div>
     		<ul>
-    			{this.props.wishes.map(function(wish, i){
+    			{this.props.wishes.reverse().map(function(wish, i){
     				return <WishItem key={wish.id} id={wish.id} name={wish.name} image={wish.imageUrl} url={wish.url} />
     			})}
 

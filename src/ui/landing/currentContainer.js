@@ -2,12 +2,11 @@ import React from 'react';
 import {connect} from 'react-redux'
 import Single from 'ui/landing/singleView'
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
-
+import {lightWhite} from 'material-ui/styles/colors'
 const bodyStyle={
   fontFamily:"Chalky",
   color:"white",
   fontSize:46
-
 }
 
 const Current = React.createClass({
@@ -22,11 +21,11 @@ const Current = React.createClass({
       	<Table style={bodyStyle}  className="tableLanding">
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow >
-              <TableHeaderColumn style={{fontSize:46, width:"15%"}}>Chore</TableHeaderColumn>
-              <TableHeaderColumn style={{fontSize:46, width:"30%"}}>Description</TableHeaderColumn>
-              <TableHeaderColumn style={{fontSize:46, width:"12%"}}>Points</TableHeaderColumn>
-              <TableHeaderColumn style={{fontSize:46, width:"13%"}}>Deny</TableHeaderColumn>
-              <TableHeaderColumn style={{fontSize:46, width:"15%"}}>Approve</TableHeaderColumn>
+              <TableHeaderColumn style={{fontSize:46, width:"15%", color:lightWhite}}>Chore</TableHeaderColumn>
+              <TableHeaderColumn style={{fontSize:46, width:"30%", color:lightWhite}}>Description</TableHeaderColumn>
+              <TableHeaderColumn style={{fontSize:46, width:"12%", color:lightWhite}}>Points</TableHeaderColumn>
+              <TableHeaderColumn style={{fontSize:46, width:"13%", color:lightWhite}}>Deny</TableHeaderColumn>
+              <TableHeaderColumn style={{fontSize:46, width:"15%", color:lightWhite}}>Approve</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody displayRowCheckbox={false}>

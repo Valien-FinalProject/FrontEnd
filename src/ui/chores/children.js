@@ -15,7 +15,7 @@ const radioStyle={
 const Children =  React.createClass({
   getInitialState:function(){
     return{
-      children:{}
+      children:{},
     }
   },
   componentWillMount:function(){
@@ -37,7 +37,7 @@ const Children =  React.createClass({
       	<p>Assign to {this.props.children.length === 1 ? "Child" : "Children"}:</p>
       	<div style={radioStyle}>
           {this.props.children.map(function(item, i){
-            return <Checkbox key={item.id} id={item.id} value={item.name} label={item.name} onCheck={(e, isChecked, id) => this.handleCheck([item.name,item.id], isChecked, item.id)} labelStyle={{color:fullWhite, fontSize:20, fontFamily:"Chalky"}} labelPosition={'left'} />
+            return <Checkbox key={item.id} id={item.id} value={item.name} label={item.name} iconStyle={{fill:"white"}} onCheck={(e, isChecked, id) => this.handleCheck([item.name,item.id], isChecked, item.id)} labelStyle={{color:fullWhite, fontSize:20, fontFamily:"Chalky"}} labelPosition={'left'} />
           }.bind(this))}
         </div>
 

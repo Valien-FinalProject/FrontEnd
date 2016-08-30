@@ -1,7 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux'
+import {getChildPoints} from 'api/api'
 
 const Notifications =  React.createClass({
+  componentWillMount:function(){
+    console.log(this.props.value)
+    getChildPoints(10)
+  },
   render: function () {
     return (
       <div style={{width:"50%"}}>

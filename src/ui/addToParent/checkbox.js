@@ -24,9 +24,9 @@ const CheckboxCont =  React.createClass({
   },
   render: function () {
    	return(
-   		<div>
+   		<div style={{display:"flex", flexDirection:"row"}}>
 	    	{this.props.children.map(function(item){
-	    	  return <Checkbox style={{width:120}} key={item.id} id={item.id} value={item.name} label={item.name} onCheck={(e, isChecked) => this.handleCheck(item.id, isChecked)} labelStyle={{color:fullWhite, fontSize:20, fontFamily:"Chalky"}} labelPosition={'left'} />
+	    	  return <Checkbox iconStyle={{fill:"white"}} style={{width:120}} key={item.id} id={item.id} value={item.name} label={item.name} onCheck={(e, isChecked) => this.handleCheck(item.id, isChecked)} labelStyle={{color:fullWhite, fontSize:20, fontFamily:"Chalky"}} labelPosition={'left'} />
 	    	}.bind(this))}
     	</div>
  

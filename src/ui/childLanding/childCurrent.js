@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 import RaisedButton from 'material-ui/RaisedButton'
 import Single from 'ui/childLanding/childcurrentsingle'
+import {lightWhite} from 'material-ui/styles/colors'
 
 const bodyStyle={
   fontFamily:"Chalky",
@@ -45,10 +46,10 @@ const CurrentChores =  React.createClass({
         <Table style={bodyStyle}  className="tableLanding">
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow >
-              <TableHeaderColumn style={{fontSize:52}}>Chore</TableHeaderColumn>
-              <TableHeaderColumn style={{fontSize:52, width:"33%"}}>Description</TableHeaderColumn>
-              <TableHeaderColumn style={{fontSize:52, width:"21%"}}>Points</TableHeaderColumn>
-              <TableHeaderColumn style={{fontSize:52, width:"21%"}}>Complete</TableHeaderColumn>
+              <TableHeaderColumn style={{fontSize:52, color:lightWhite}}>Chore</TableHeaderColumn>
+              <TableHeaderColumn style={{fontSize:52, color:lightWhite, width:"33%"}}>Description</TableHeaderColumn>
+              <TableHeaderColumn style={{fontSize:52, color:lightWhite, width:"21%"}}>Points</TableHeaderColumn>
+              <TableHeaderColumn style={{fontSize:52, color:lightWhite, width:"21%"}}>Complete</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody displayRowCheckbox={false}>

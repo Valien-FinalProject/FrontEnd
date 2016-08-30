@@ -8,15 +8,8 @@ var endWeekVal = endWeek.valueOf()
 export default React.createClass({
 
   render: function () {
-  	console.log(newWeek)
-  	console.log(newWeekVal)
-  	console.log(endWeekVal)
-  	if(this.props.endDate < endWeekVal && this.props.startDate > newWeekVal){
     return (
-      <li>{item.name}</li>
+      <li>{this.props.name}</li>
     )
-	}else{
-		return null
-	}
   }
 })

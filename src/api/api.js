@@ -215,12 +215,15 @@ export function login(username, password){
 	})
 }
 
-export function getChildPoints(){
+export function getChildPoints(id){
 	api.get(`parent/child/${id}/points`).then(function(response){
+		console.log(response)
 		store.dispatch({
 			type:"GET_CHILD_POINTS",
-			points:response
+			points:response.data
 		})
+	}).catch(function(err){
+		console.dir(err)
 	})
 }
 

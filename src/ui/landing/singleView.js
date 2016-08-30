@@ -12,21 +12,21 @@ var endDayNum =  endDay.valueOf()
 const bodyStyle={
   fontFamily:"Chalky",
   color:"white",
-  fontSize:42,
+  fontSize:32,
   width:"15%"
 
 }
 const bodyStyle2={
   fontFamily:"Chalky",
   color:"white",
-  fontSize:42,
+  fontSize:32,
   width:"30%"
 
 }
 const bodyStyle3={
   fontFamily:"Chalky",
   color:"white",
-  fontSize:42,
+  fontSize:32,
   width:"12%"
 
 

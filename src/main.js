@@ -13,6 +13,9 @@ require('highcharts/modules/exporting')(Highcharts);
 
 //Material UI and OnTouchTap
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 // Needed for onTouchTap
@@ -58,7 +61,7 @@ import Wishlist from 'ui/wishlist/wishlist'
 import CProfile from 'ui/profile/childProfile'
 
 const Site = (
-  <MuiThemeProvider>
+  <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
   	<Provider store={store}>
 	    <Router history={browserHistory}>
 	    	<Route path="/" component={Home} />
