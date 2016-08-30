@@ -12,6 +12,13 @@ import Children from 'ui/chores/children'
 
 import {lightWhite, fullWhite} from 'material-ui/styles/colors'
 
+import moment from 'moment' 
+var startDay= moment().startOf('day')
+var startDayVal = startDay.valueOf()
+
+var endDay = moment().endOf('day')
+var endDayVal = endDay.valueOf()
+
 var counter = 0 
 const hintStyle ={
   color:lightWhite,
@@ -29,9 +36,9 @@ export default React.createClass({
   getInitialState:function(){
     return{
       description:"",
-      endDate:{},
+      endDate:endDayVal,
       name:"",
-      startDate:{},
+      startDate:startDayVal,
       value:"",
       days:{},
       id:{},
@@ -44,6 +51,7 @@ export default React.createClass({
     this.setState(newState)
   },
   handleSubmit:function(e){
+    console.log(endDayVal)
     e.preventDefault()
     if(Object.keys(this.state.id).length === 0){
     createChore(this.state.description, this.state.endDate, this.state.name, this.state.startDate, this.state.num)

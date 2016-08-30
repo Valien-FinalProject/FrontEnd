@@ -1,6 +1,7 @@
 import React from 'react';
 import {deleteWish, getWishes} from 'api/api'
 import {fullWhite} from 'material-ui/styles/colors'
+import {GridTile} from 'material-ui/GridList'
 
 
 const aStyle={
@@ -26,10 +27,10 @@ export default React.createClass({
   },
   render: function () {
     return (
-      
-      		<li style={liStyle} id={this.props.id}><a style={aStyle} href={this.props.url}><p style={{display:"inline-block", marginTop:151, marginBottom:0}}>{this.props.name}</p> <img src={this.props.image} style={{float:"right", display:"inline-block", width:180, height:180}}/></a></li>
-      
-
+      		<GridTile  id={this.props.id} containerElement={<a href={this.props.url} />} title={this.props.name}> 
+            <img src={this.props.image} />
+          </GridTile>
+        
 
     )
   }

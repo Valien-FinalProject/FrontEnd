@@ -10,7 +10,7 @@ const style={
   display:"inline-block",
   width:"50%",
   textAlign:"center",
-  borderRight:"1px dashed black",
+  borderRight:"1px solid white",
   color:"white",
   letterSpacing:".1em"
 }
