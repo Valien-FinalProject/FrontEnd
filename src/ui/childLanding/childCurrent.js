@@ -9,20 +9,20 @@ import {lightWhite} from 'material-ui/styles/colors'
 const bodyStyle={
   fontFamily:"Chalky",
   color:"white",
-  fontSize:48
+  fontSize:30
 
 }
 const bodyStyle2={
   fontFamily:"Chalky",
   color:"white",
-  fontSize:48,
+  fontSize:30,
   width:"33%"
 
 }
 const bodyStyle3={
   fontFamily:"Chalky",
   color:"white",
-  fontSize:48,
+  fontSize:30,
   width:"21%"
 
 }
