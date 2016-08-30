@@ -12,7 +12,7 @@ import Children from 'ui/chores/children'
 
 import {lightWhite, fullWhite} from 'material-ui/styles/colors'
 
-
+var counter = 0 
 const hintStyle ={
   color:lightWhite,
   fontFamily:"Chalky",
@@ -34,7 +34,8 @@ export default React.createClass({
       startDate:{},
       value:"",
       days:{},
-      id:{}
+      id:{},
+      counter:{display:'none'}
     }
   },
   handleChange:function(e){
@@ -45,12 +46,12 @@ export default React.createClass({
   handleSubmit:function(e){
     e.preventDefault()
     if(Object.keys(this.state.id).length === 0){
-    createChore(this.state.description, this.state.endDate, this.state.name, this.state.startDate, this.state.value)
+    createChore(this.state.description, this.state.endDate, this.state.name, this.state.startDate, this.state.num)
    }
 
     for(var key in this.state.id){
     if(Object.keys(this.state.id).length > 0 && this.state.id[key] === true){
-      assignChore(key, this.state.description, this.state.endDate, this.state.name, this.state.startDate, this.state.value )
+      assignChore(key, this.state.description, this.state.endDate, this.state.name, this.state.startDate, this.state.num )
     }
     else if( Object.keys(this.state.id).length >0 && this.state.id[key] === false){
        console.log("No point including this")
@@ -62,8 +63,15 @@ export default React.createClass({
     }
    }
 
-
-
+   counter += 1
+   this.setState({
+      description:"",
+      endDate:{},
+      name:"",
+      startDate:{},
+      num:"",
+      counter:{display:"inline-block", marginTop:30, fontSize:24}
+   })
 
   },
   getMinDate: function(date) {
@@ -96,17 +104,17 @@ export default React.createClass({
         <h1 style={{marginLeft:20}}> Create Chore</h1>
         <div style={{height:40, width:"100%"}} />
       <form style={{width:"65%", marginLeft:20}} ref="chores" onSubmit={this.handleSubmit}>
-      	<div><TextField fullWidth={true} name="name" inputStyle={inputStyle} hintStyle={hintStyle} onChange={this.handleChange}  hintText="New Chore" /></div>
+      	<div><TextField fullWidth={true} value={this.state.name} name="name" inputStyle={inputStyle} hintStyle={hintStyle} onChange={this.handleChange}  hintText="New Chore" /></div>
         <div style={{height:30, width:"100%"}} />
-        <div><TextField fullWidth={true} name="description" inputStyle={inputStyle} hintStyle={hintStyle} onChange={this.handleChange}  hintText="Description" /> </div>
+        <div><TextField fullWidth={true} value={this.state.description} name="description" inputStyle={inputStyle} hintStyle={hintStyle} onChange={this.handleChange}  hintText="Description" /> </div>
         <div style={{height:30, width:"100%"}} />
-      	<div><TextField fullWidth={true} name="value" inputStyle={inputStyle} hintStyle={hintStyle} onChange={this.handleChange}  hintText="Points" type="number" min="1" max="10000" /></div>
+      	<div><TextField fullWidth={true} value={this.state.num} name="num" inputStyle={inputStyle} hintStyle={hintStyle} onChange={this.handleChange}  hintText="Points" type="number" min="1" max="10000" /></div>
         <div style={{height:30, width:"100%"}} />
       	<DateSelector getMinDate={this.getMinDate} getMaxDate={this.getMaxDate} />
       	<Children getChildrenId={this.getChildrenId} />
       	<RaisedButton style={{marginTop:20}} type="submit">Submit </RaisedButton>
       </form>
-
+      <p style={this.state.counter}>{counter}: {counter === 1 ? "Chore" : "Chores"} created</p>
 
       </div>
     )

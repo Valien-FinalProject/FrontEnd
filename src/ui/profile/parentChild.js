@@ -44,6 +44,7 @@ const ParentChild = React.createClass({
   		password:"",
   		phone:"",
   		username:"",
+      confirm:"",
   		visible:{display:"none"}
   	}
   },
@@ -62,7 +63,18 @@ const ParentChild = React.createClass({
   		this.setState({visible:{display:"block"}})
   	}else{
   		updateChildProfile(this.state.value, this.state.email, this.state.name, this.state.password, this.state.phone, this.state.username)
-  	}
+  	
+    this.setState({
+      value:firstVal,
+      email:"",
+      name:"",
+      password:"",
+      phone:"",
+      username:"",
+      confirm:"",
+      visible:{display:"none"}
+    })
+    }
   },
   render: function () {
     return (
@@ -70,7 +82,7 @@ const ParentChild = React.createClass({
       	<h1>Update Child:</h1>
  		<div style={radioStyle}>
           
-          <RadioButtonGroup style={radioStyle} name="children" defaultSelected={Number(localStorage.getItem('ChildIdforDefault'))} onChange={(e, value) => this.handleToggle(e, value)}> 
+          <RadioButtonGroup style={radioStyle} name="children" defaultSelected={firstVal} onChange={(e, value) => this.handleToggle(e, value)}> 
           {this.props.children.map(function(item, i){
             return <RadioButton inputStyle={{borderColor:"white", color:"white"}} labelStyle={{color:"white", fontFamily:"Chalky", marginLeft:0}} key={i} value={item.id} label={(item.name).toUpperCase()}  />
           })}
@@ -78,17 +90,17 @@ const ParentChild = React.createClass({
         </div>
 
         <form onSubmit={this.handleSubmit} style={{width:"65%"}}>
-        	<TextField onChange={this.handleChange}  name="username" inputStyle={inputStyle} hintText="Username" hintStyle={style} underlineShow={false} />
+        	<TextField onChange={this.handleChange} value={this.state.username}  name="username" inputStyle={inputStyle} hintText="Username" hintStyle={style} underlineShow={false} />
 		    <Divider />
-		    <TextField onChange={this.handleChange}  name="name" inputStyle={inputStyle} hintText="Name" hintStyle={style} underlineShow={false} />
+		    <TextField onChange={this.handleChange} value={this.state.name}  name="name" inputStyle={inputStyle} hintText="Name" hintStyle={style} underlineShow={false} />
 		    <Divider />
-		    <TextField onChange={this.handleChange} type="password" inputStyle={inputStyle} name="password" hintText="New PW" type="password" hintStyle={style} underlineShow={false} />
+		    <TextField onChange={this.handleChange} value={this.state.password} type="password" inputStyle={inputStyle} name="password" hintText="New PW" type="password" hintStyle={style} underlineShow={false} />
 		    <Divider />
-		    <TextField onChange={this.handleChange} type="password" inputStyle={inputStyle} name="confirm" hintText="Confirm New" type="password" hintStyle={style} underlineShow={false} />
+		    <TextField onChange={this.handleChange} value={this.state.confirm} type="password" inputStyle={inputStyle} name="confirm" hintText="Confirm New" type="password" hintStyle={style} underlineShow={false} />
 		    <Divider />
-		    <TextField onChange={this.handleChange} name="email" inputStyle={inputStyle} hintText="Email address" type="email" hintStyle={style} underlineShow={false} />
+		    <TextField onChange={this.handleChange} value={this.state.email} name="email" inputStyle={inputStyle} hintText="Email address" type="email" hintStyle={style} underlineShow={false} />
 		    <Divider />
-		    <TextField onChange={this.handleChange} name="phone" inputStyle={inputStyle} hintText="Phone" type="tel" hintStyle={style} underlineShow={false} />
+		    <TextField onChange={this.handleChange} value={this.state.phone} name="phone" inputStyle={inputStyle} hintText="Phone" type="tel" hintStyle={style} underlineShow={false} />
 		    <Divider />
 		    <RaisedButton style={{marginTop:20}} type="submit" label="Update" />
         </form>

@@ -49,7 +49,13 @@ const ChildCreator = React.createClass({
   handleSubmit:function(e){
   	e.preventDefault();
   	createChild(this.state.phone, this.state.email, this.state.name, this.state.password, this.state.username)
-  	this.setState({username:"",name:"",email:"",phone:"",password:""})
+  	this.setState({
+      username:"",
+      name:"",
+      email:"",
+      phone:"",
+      password:""
+    })
   },
   render: function () {
     return (
@@ -60,15 +66,15 @@ const ChildCreator = React.createClass({
         	<form style={{marginLeft:"5%", width:"75%"}} onSubmit={this.handleSubmit} >
   	   
   	      		<h1> Create Child</h1>
-  	      		<TextField hintText="Username" hintStyle={hintStyle} inputStyle={inputStyle} onChange={this.handleChange} name="username" underlineShow={false} />
+  	      		<TextField value={this.state.username} hintText="Username" hintStyle={hintStyle} inputStyle={inputStyle} onChange={this.handleChange} name="username" underlineShow={false} />
   	      		<Divider />
-    			    <TextField hintText="Name" hintStyle={hintStyle} inputStyle={inputStyle} onChange={this.handleChange} name="name" underlineShow={false} />
+    			    <TextField value={this.state.name} hintText="Name" hintStyle={hintStyle} inputStyle={inputStyle} onChange={this.handleChange} name="name" underlineShow={false} />
     			    <Divider />
-    			    <TextField hintText="Email" hintStyle={hintStyle} inputStyle={inputStyle} onChange={this.handleChange} type="email" name="email" underlineShow={false} />
+    			    <TextField value={this.state.email} hintText="Email" hintStyle={hintStyle} inputStyle={inputStyle} onChange={this.handleChange} type="email" name="email" underlineShow={false} />
     			    <Divider />
-    			    <TextField hintText="Phone 123-234-2345"  hintStyle={hintStyle} inputStyle={inputStyle} onChange={this.handleChange} name="phone" underlineShow={false} />
+    			    <TextField value={this.state.phone} hintText="Phone 123-234-2345"  hintStyle={hintStyle} inputStyle={inputStyle} onChange={this.handleChange} name="phone" underlineShow={false} />
     			    <Divider />
-    			    <TextField hintText="Password" hintStyle={hintStyle} inputStyle={inputStyle} onChange={this.handleChange} name="password" underlineShow={false} />
+    			    <TextField value={this.state.password} hintText="Password" hintStyle={hintStyle} inputStyle={inputStyle} onChange={this.handleChange} name="password" underlineShow={false} />
     			    <Divider />
     			    <RaisedButton style={{marginTop:20}} type="submit" label="Create"/>
   	  		

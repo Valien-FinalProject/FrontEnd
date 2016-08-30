@@ -28,6 +28,7 @@ export default React.createClass({
       console.log(key, this.state.points)
     	}
 	}
+  this.setState({points:""})
   },
   handleDeduct:function(){
   	for(var key in this.state.id){
@@ -35,16 +36,17 @@ export default React.createClass({
       deductPointsViaPath(key, this.state.points)
     	}
 	}
+  this.setState({points:""})
   },
   render: function () {
     return (
-      <div>
+      <div style={{marginTop:150}}>
       <h1> Add or Deduct from Child</h1>
   		
-  			<TextField onChange={this.handleChange} name="points" inputStyle={{color:fullWhite, fontSize:24, fontFamily:"Chalky"}} hintStyle={{color:lightWhite, fontSize:24, fontFamily:"Chalky"}} hintText="Assign Points" type="number" />
+  			<TextField value={this.state.points} onChange={this.handleChange} name="points" inputStyle={{color:fullWhite, fontSize:24, fontFamily:"Chalky"}} hintStyle={{color:lightWhite, fontSize:24, fontFamily:"Chalky"}} hintText="Assign Points" type="number" />
   			<Checkboxer getChildId={this.getChildId} />
-  			<RaisedButton onTouchTap={this.handleAdd} label="Add"/>
-  			<RaisedButton onTouchTap={this.handleDeduct} label="Deduct" />
+  			<RaisedButton style={{marginTop:20, marginRight:10}} onTouchTap={this.handleAdd} label="Add"/>
+  			<RaisedButton style={{marginTop:20}} onTouchTap={this.handleDeduct} label="Deduct" />
 
 
   		

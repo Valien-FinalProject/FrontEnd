@@ -50,15 +50,15 @@ export default React.createClass({
       	<form onSubmit={this.handleSubmit}>
       	<Paper zDepth={3} style={paperStyle}>
       		<h1>Update Info</h1>
-		    <TextField hintText="Current PW" onChange={this.handleChange} style={style} name="currentpw" underlineShow={false} />
+		    <TextField hintText="Current PW" onChange={this.handleChange} style={style} value={this.state.currentpw} name="currentpw" underlineShow={false} />
 		    <Divider />
-		    <TextField hintText="New PW" onChange={this.handleChange}type="password" name="newpw" style={style} underlineShow={false} />
+		    <TextField hintText="New PW" onChange={this.handleChange}type="password" value={this.state.newpw} name="newpw" style={style} underlineShow={false} />
 		    <Divider />
-		    <TextField hintText="Confirm New" onChange={this.handleChange} type="password" style={style} underlineShow={false} />
+		    <TextField hintText="Confirm New" onChange={this.handleChange} type="password" value={this.state.password} style={style} underlineShow={false} />
 		    <Divider />
-		    <TextField hintText="Email address" onChange={this.handleChange} type="email" name="email" style={style} underlineShow={false} />
+		    <TextField hintText="Email address" onChange={this.handleChange} type="email" value={this.state.email} name="email" style={style} underlineShow={false} />
 		    <Divider />
-		    <TextField hintText="Phone" onChange={this.handleChange} type="tel" style={style} name="phone" underlineShow={false} />
+		    <TextField hintText="Phone" onChange={this.handleChange} type="tel" style={style} value={this.state.phone} name="phone" underlineShow={false} />
 		    <Divider />
 		    <Checkbox name="eopt" onCheck={(e, isChecked) => this.handleCheck("eopt", isChecked)} label="Opt in to Email notificaitons"/>
 		    <Checkbox name="topt" onCheck={(e, isChecked) => this.handleCheck("popt", isChecked)} label="Opt in to Phone notificaitons"/>

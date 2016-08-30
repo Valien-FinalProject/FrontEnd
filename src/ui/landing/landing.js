@@ -37,13 +37,13 @@ const parentLanding =  React.createClass({
   },
   componentWillMount:function(){
     getChildren()
-    var x = Number(localStorage.getItem('ChildIdforDefault'))
+    // var x = Number(localStorage.getItem('ChildIdforDefault'))
 
-    getParentCurrentChoresById(x)
-    getParentCompleteChoresById(x)
-    getParentPendingChoresById(x)
-    console.log("hello", moment().date())
-    console.log("moment", moment().month())
+    // getParentCurrentChoresById(x)
+    // getParentCompleteChoresById(x)
+    // getParentPendingChoresById(x)
+    // console.log("hello", moment().date())
+    // console.log("moment", moment().month())
     
   },
   handleChange:function(e, value){
@@ -70,7 +70,7 @@ const parentLanding =  React.createClass({
         <h1 style={{fontSize:52, textAlign:"center"}}>Chores on {moment().month()}/{moment().date()}</h1>
         <div style={radioStyle}>
           <span>Toggle Child:</span>
-          <RadioButtonGroup style={radioStyle} name="children" defaultSelected={Number(localStorage.getItem('ChildIdforDefault'))} onChange={(e, value) => this.handleChange(e, value)}> 
+          <RadioButtonGroup style={radioStyle} name="children" onChange={(e, value) => this.handleChange(e, value)}> 
           {this.props.children.map(function(item, i){
             return <RadioButton inputStyle={{borderColor:"white", color:"white"}} labelStyle={{color:"white", fontFamily:"Chalky", marginLeft:0}} key={i} value={item.id} label={(item.name).toUpperCase()}  />
           })}
