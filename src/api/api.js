@@ -5,6 +5,7 @@ import {browserHistory} from 'react-router'
 import {saveState} from 'api/localstorage'
 
 
+
 api.new('https://vast-fortress-99365.herokuapp.com')
 //eopt===email optin, popt=== phone optin
 
@@ -202,6 +203,12 @@ export function updateParent(email, eopt, name, password, phone, popt, username)
 export function updateChildProfile(id, email, name, password, phone, username){
 	api.put(`parent/child/${id}`, {email:email, name:name, password:password, phone:phone, username:username}).then(function(response){
 		console.log(response)
+		// store.dispatch({
+		// 	type:"UPDATE_CHILD",
+
+		// })
+	}).catch(function(err){
+		console.dir(err)
 	})
 }
 

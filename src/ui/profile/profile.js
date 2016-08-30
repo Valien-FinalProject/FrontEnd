@@ -55,6 +55,14 @@ export default React.createClass({
   		this.setState({visible:{display:"block"}})
   	}else{
   		updateParent(this.state.email, this.state.eopt, this.state.name, this.state.password, this.state.phone, this.state.popt, this.state.username)
+      this.setState({
+        email:"",
+        name:"",
+        password:"",
+        username:"",
+        confirm:"",
+        phone:""
+      })
   	}
   },
   render: function () {
@@ -64,17 +72,17 @@ export default React.createClass({
       	<form style={{width:"65%", marginLeft:20}} onSubmit={this.handleSubmit} >
       	      	
       		<h1>Update Parent Info</h1>
-		    <TextField onChange={this.handleChange}  name="username" inputStyle={inputStyle} hintText="Username" hintStyle={style} underlineShow={false} />
+		    <TextField onChange={this.handleChange} value={this.state.username} name="username" inputStyle={inputStyle} hintText="Username" hintStyle={style} underlineShow={false} />
 		    <Divider />
-		    <TextField onChange={this.handleChange}  name="name" inputStyle={inputStyle} hintText="Name" hintStyle={style} underlineShow={false} />
+		    <TextField onChange={this.handleChange} value={this.state.name} name="name" inputStyle={inputStyle} hintText="Name" hintStyle={style} underlineShow={false} />
 		    <Divider />
-		    <TextField onChange={this.handleChange} type="password" inputStyle={inputStyle} name="password" hintText="New PW" type="password" hintStyle={style} underlineShow={false} />
+		    <TextField onChange={this.handleChange} value={this.state.password} type="password" inputStyle={inputStyle} name="password" hintText="New PW" type="password" hintStyle={style} underlineShow={false} />
 		    <Divider />
-		    <TextField onChange={this.handleChange} type="password" inputStyle={inputStyle} name="confirm" hintText="Confirm New" type="password" hintStyle={style} underlineShow={false} />
+		    <TextField onChange={this.handleChange} value={this.state.confirm} type="password" inputStyle={inputStyle} name="confirm" hintText="Confirm New" type="password" hintStyle={style} underlineShow={false} />
 		    <Divider />
-		    <TextField onChange={this.handleChange} name="email" inputStyle={inputStyle} hintText="Email address" type="email" hintStyle={style} underlineShow={false} />
+		    <TextField onChange={this.handleChange} value={this.state.email} name="email" inputStyle={inputStyle} hintText="Email address" type="email" hintStyle={style} underlineShow={false} />
 		    <Divider />
-		    <TextField onChange={this.handleChange} name="phone" inputStyle={inputStyle} hintText="Phone" type="tel" hintStyle={style} underlineShow={false} />
+		    <TextField onChange={this.handleChange} value={this.state.phone} name="phone" inputStyle={inputStyle} hintText="Phone" type="tel" hintStyle={style} underlineShow={false} />
 		    <Divider />
 		    <Checkbox onCheck={(e,isChecked) => this.handleCheck("eopt", isChecked)} labelStyle={labelStyle} name="eopt" style={{fontSize:12, width:250}} label="Check to receive email notifications" labelPosition={'left'} defaultChecked={true} />
       		<Checkbox onCheck={(e,isChecked) => this.handleCheck("popt", isChecked)} labelStyle={labelStyle} name="popt" style={{fontSize:12, width:250}} label="Check to receive email notifications" labelPosition={'left'} defaultChecked={true} /> 

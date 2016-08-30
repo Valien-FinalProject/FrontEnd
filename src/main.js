@@ -5,7 +5,6 @@ import store from 'store'
 import { Provider } from 'react-redux'
 
 
-
 //Charting Requires
 const Highcharts =  require('highcharts')
 require('highcharts/modules/exporting')(Highcharts);

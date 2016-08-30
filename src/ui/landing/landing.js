@@ -37,6 +37,8 @@ const parentLanding =  React.createClass({
   },
   componentWillMount:function(){
     getChildren()
+    console.log("childrenProps", this.props.children)
+    // getChildren()
     // var x = Number(localStorage.getItem('ChildIdforDefault'))
 
     // getParentCurrentChoresById(x)
