@@ -61,7 +61,7 @@ const ParentChild = React.createClass({
       	<h1>Update Child:</h1>
  		<div style={radioStyle}>
           
-          <RadioButtonGroup style={radioStyle} name="children" defaultSelected={firstVal} onChange={(e, value) => this.handleToggle(e, value)}> 
+          <RadioButtonGroup style={radioStyle} name="children" onChange={(e, value) => this.handleToggle(e, value)}> 
           {this.props.children.map(function(item, i){
             return <RadioButton inputStyle={{borderColor:"white", color:"white"}} labelStyle={{color:"white", fontFamily:"Chalky", marginLeft:0}} key={i} value={item.id} label={(item.name).toUpperCase()}  />
           })}
