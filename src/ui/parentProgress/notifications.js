@@ -15,6 +15,7 @@ const Notifications =  React.createClass({
       	<ul>
       		{this.props.rewards.map(function(reward){
       			return <li style={{fontSize:24}} key={reward.id}><p style={{width:"66%", display:"inline-block"}}>Reward: {reward.name}</p> <p style={{display:"inline-block", marginLeft:50}}>Points: {reward.points}</p></li>
+          
       		})}
 
       	</ul>
