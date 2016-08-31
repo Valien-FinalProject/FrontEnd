@@ -9,7 +9,7 @@ import Wish from 'ui/rewards/wishitem'
 
 const style={
 	display:"inline-block",
-	width:"50%",
+	width:"55%",
   textAlign:"center"
 }
 const radioStyle={

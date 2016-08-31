@@ -8,7 +8,7 @@ import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColu
 
 const style={
   display:"inline-block",
-  width:"50%",
+  width:"45%",
   textAlign:"center",
   borderRight:"1px solid white",
   color:"white",

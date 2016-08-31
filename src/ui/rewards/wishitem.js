@@ -26,7 +26,7 @@ export default React.createClass({
     <div style={{display:"flex", flexDirection:"row"}}>
       <div style={{width:"90%", margin:"auto", marginTop:15}}>
 
-      		<li><p style={{display:"inline-block",marginRight:20, fontSize:24}}>Wish: {this.props.name}</p><a href={this.props.url}><img style={{marginTop:5, marginRight:20}} src={this.props.image}/></a><div style={{display:"inline-block", marginBottom:20, boxStyle:"border-box"}}>
+      		<li style={{marginLeft:0}}><p style={{display:"inline-block",marginRight:20, fontSize:24}}>Wish: {this.props.name}</p><a href={this.props.url}><img style={{marginTop:5, marginRight:20}} src={this.props.image}/></a><div style={{display:"inline-block", marginBottom:20, boxStyle:"border-box"}}>
       <TextField type="number" name="points" hintStyle={{color:fullWhite, fontSize:20, fontFamily:"Chalky"}} inputStyle={{color:fullWhite, fontSize:20, fontFamily:"Chalky"}} onChange={this.handleChange} hintText="Assign Points" />
     
           <RaisedButton style={{border:"1px solid white", marginRight:5}}labelStyle={{color:"green"}} onTouchTap={(e) => this.handleAssign(this.props.id)} type="submit" name="approve" label="approve"/>
