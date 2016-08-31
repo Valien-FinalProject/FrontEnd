@@ -27,7 +27,7 @@ export default React.createClass({
   },
   render: function () {
     return (
-      		<GridTile  id={this.props.id} containerElement={<a href={this.props.url} />} title={this.props.name}> 
+      		<GridTile id={this.props.id} containerElement={<a href={this.props.url} />} title={this.props.name}> 
             <img src={this.props.image} />
           </GridTile>
         

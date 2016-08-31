@@ -49,7 +49,7 @@ export default React.createClass({
   		})
   	}else if(this.props.complete){
   		this.setState({
-  			color:"rgba(255,0,0,.15)",
+  			color:"rgba(0,255,0,.15)",
   			style:{display:"none"}
   		})
   	}else{

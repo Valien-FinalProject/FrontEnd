@@ -3,9 +3,11 @@ import {RadioButtonGroup, RadioButton} from 'material-ui/RadioButton'
 import {connect} from 'react-redux'
 import TextField from 'material-ui/TextField'
 import Divider from 'material-ui/Divider';
-import {updateChildProfile} from 'api/api'
+import {updateChildProfile, getChildren} from 'api/api'
 import {lightWhite, fullWhite} from 'material-ui/styles/colors'
 import RaisedButton from 'material-ui/RaisedButton'
+import ChildSingle from 'ui/profile/childsingle'
+
 
 
 const radioStyle={
@@ -38,7 +40,7 @@ var firstVal=Number(localStorage.getItem('ChildIdforDefault'))
 const ParentChild = React.createClass({
   getInitialState:function(){
   	return{
-  		value:firstVal,
+  		value:"",
   		email:"",
   		name:"",
   		password:"",
@@ -50,31 +52,8 @@ const ParentChild = React.createClass({
   },
   handleToggle:function(e, value){
   	this.setState({value:value})
+    getChildren()
 
-  },
-  handleChange:function(e){
-  	var newState = Object.assign({},this.state)
-  	newState[e.target.name] = e.target.value
-  	this.setState(newState)
-  },
-  handleSubmit:function(e){
-  	e.preventDefault()
-  	if(this.state.password !== this.state.confirm){
-  		this.setState({visible:{display:"block"}})
-  	}else{
-  		updateChildProfile(this.state.value, this.state.email, this.state.name, this.state.password, this.state.phone, this.state.username)
-  	
-    this.setState({
-      value:firstVal,
-      email:"",
-      name:"",
-      password:"",
-      phone:"",
-      username:"",
-      confirm:"",
-      visible:{display:"none"}
-    })
-    }
   },
   render: function () {
     return (
@@ -89,22 +68,9 @@ const ParentChild = React.createClass({
           </RadioButtonGroup>
         </div>
 
-        <form onSubmit={this.handleSubmit} style={{width:"65%"}}>
-        	<TextField onChange={this.handleChange} value={this.state.username}  name="username" inputStyle={inputStyle} hintText="Username" hintStyle={style} underlineShow={false} />
-		    <Divider />
-		    <TextField onChange={this.handleChange} value={this.state.name}  name="name" inputStyle={inputStyle} hintText="Name" hintStyle={style} underlineShow={false} />
-		    <Divider />
-		    <TextField onChange={this.handleChange} value={this.state.password} type="password" inputStyle={inputStyle} name="password" hintText="New PW" type="password" hintStyle={style} underlineShow={false} />
-		    <Divider />
-		    <TextField onChange={this.handleChange} value={this.state.confirm} type="password" inputStyle={inputStyle} name="confirm" hintText="Confirm New" type="password" hintStyle={style} underlineShow={false} />
-		    <Divider />
-		    <TextField onChange={this.handleChange} value={this.state.email} name="email" inputStyle={inputStyle} hintText="Email address" type="email" hintStyle={style} underlineShow={false} />
-		    <Divider />
-		    <TextField onChange={this.handleChange} value={this.state.phone} name="phone" inputStyle={inputStyle} hintText="Phone" type="tel" hintStyle={style} underlineShow={false} />
-		    <Divider />
-		    <RaisedButton style={{marginTop:20}} type="submit" label="Update" />
-        </form>
-        	<p style={this.state.visible}>PASSWORDS DON'T MATCH</p>
+        {this.props.children.map(function(item){
+          return <ChildSingle value={this.state.value} key={item.id} id={item.id} name={item.name} un={item.username} />
+        }.bind(this))}
       </div>
     )
   }

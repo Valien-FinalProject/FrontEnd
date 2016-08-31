@@ -70,6 +70,12 @@ const parentLanding =  React.createClass({
     return (
       <div>
         <h1 style={{fontSize:52, textAlign:"center"}}>Chores on {moment().month()}/{moment().date()}</h1>
+        <div style={{display:"inline-block", float:"right", height:30, width:208, marginTop:20, marginRight:20, border:"1px solid white", padding:3}}>
+          <p style={{display:"inline-block", marginTop:4, marginBottom:4}} >KEY: &nbsp; </p>
+          <span style={{backgroundColor:"rgba(255,255,0,.2)", padding:2, color:fullWhite, width:100, height:40, marginRight:5}}> Pending</span>
+          <span style={{backgroundColor:"rgba(0,255,0,.2)", padding:2, color:fullWhite, width:100, height:40}}> Complete</span>
+
+        </div>
         <div style={radioStyle}>
           <span>Toggle Child:</span>
           <RadioButtonGroup style={radioStyle} name="children" onChange={(e, value) => this.handleChange(e, value)}> 
@@ -77,18 +83,14 @@ const parentLanding =  React.createClass({
             return <RadioButton inputStyle={{borderColor:"white", color:"white"}} labelStyle={{color:"white", fontFamily:"Chalky", marginLeft:0}} key={i} value={item.id} label={(item.name).toUpperCase()}  />
           })}
           </RadioButtonGroup>
-        </div>
+        
+      </div>
+      
       <div id="landingPage">
       	<div style={div3} className="landingBox">
       		<Current getStartTime={this.getStartTime} getEndTime={this.getEndTime} value={this.state.value} />
       	</div>
       </div>
-    <div style={{position:"static", bottom:0, left:0, height:30, width:208, marginTop:20, border:"1px solid white"}}>
-      <p style={{display:"inline-block", marginTop:4, marginBottom:4}} >KEY: &nbsp; </p>
-      <span style={{backgroundColor:"rgba(255,255,0,.2)", padding:2, color:fullWhite, width:100, height:40, marginRight:5}}> Pending</span>
-      <span style={{backgroundColor:"rgba(255,0,0,.2)", padding:2, color:fullWhite, width:100, height:40}}> Complete</span>
-
-    </div>
 
     </div>
     )

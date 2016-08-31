@@ -11,7 +11,7 @@ const styles = {
     justifyContent: 'space-around',
   },
   gridList: {
-    width: 500,
+    width: 1000,
     height: 500,
     overflowY: 'auto',
     marginBottom: 24,
@@ -26,7 +26,7 @@ const Wishlister =  React.createClass({
   render: function () {
     return (
     	<div style={styles.root} >
-    		<GridList cellHeight={200} style={styles.gridList}>
+    		<GridList cols={4} cellHeight={200} style={styles.gridList}>
     			{this.props.wishes.reverse().map(function(wish, i){
     				return <WishItem key={wish.id} id={wish.id} name={wish.name} image={wish.imageUrl} url={wish.url} />
     			})}

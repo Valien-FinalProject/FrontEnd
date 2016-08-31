@@ -40,6 +40,7 @@ export default React.createClass({
   handleSubmit:function(e){
     e.preventDefault()
     makeAWish(this.state.wish)
+    this.setState({wish:""})
 
     
 
@@ -50,7 +51,7 @@ export default React.createClass({
     	<div style={styles.style}>
     		<h1 style={style}> Add An Item To Your Wishlist!</h1>
             <form onSubmit={this.handleSubmit}>
-    		  <TextField inputStyle={{color:fullWhite, fontSize:24, fontFamily:"Chalky"}} hintStyle={styles.errorStyle} fullWidth={true} onChange={this.handleChange} ref="wishes" name="wish" hintText="Add Wish" />
+    		  <TextField value={this.state.wish} inputStyle={{color:fullWhite, fontSize:24, fontFamily:"Chalky"}} hintStyle={styles.errorStyle} fullWidth={true} onChange={this.handleChange} ref="wishes" name="wish" hintText="Add Wish" />
               <RaisedButton style={{marginLeft:"48%", textAlign:"center"}} label="Make A Wish" type="submit" />
             </form>
     		<Wishlister />

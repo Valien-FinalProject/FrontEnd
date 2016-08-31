@@ -8,6 +8,7 @@ export default React.createClass({
     getParent(localStorage.getItem("parentId"))
     getParentEmail()
     getParentPhone()
+    
   },
   render: function () {
     return (
