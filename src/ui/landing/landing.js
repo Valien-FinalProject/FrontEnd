@@ -27,7 +27,8 @@ const radioStyle={
   width:220,
   textAlign:"center",
   color:"white",
-  fontFamily:"Chalky"
+  fontFamily:"Chalky",
+  marginLeft:30
 }
 const parentLanding =  React.createClass({
   getInitialState:function(){
@@ -77,7 +78,7 @@ const parentLanding =  React.createClass({
           <span>Toggle Child:</span>
           <RadioButtonGroup style={radioStyle} defaultSelected={Number(localStorage.getItem("ChildIdforDefault"))} name="children" onChange={(e, value) => this.handleChange(e, value)}> 
           {this.props.children.map(function(item, i){
-            return <RadioButton inputStyle={{borderColor:"white", color:"white"}} labelStyle={{color:"white", fontFamily:"Chalky", marginLeft:0}} key={i} value={item.id} label={(item.name).toUpperCase()}  />
+            return <RadioButton style={{width:75, marginRight:50}} inputStyle={{borderColor:"white", color:"white", fontSize:24}} labelStyle={{color:"white", fontFamily:"Chalky", marginLeft:0, fontSize:20}} key={i} value={item.id} label={(item.name).toUpperCase()}  />
           })}
           </RadioButtonGroup>
         

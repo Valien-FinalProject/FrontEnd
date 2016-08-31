@@ -11,8 +11,9 @@ import {fullWhite} from 'material-ui/styles/colors'
 const radioStyle={
   display:"flex",
   flexDirection:"row",
-  width:120,
-  color:fullWhite
+  width:"100",
+  color:fullWhite,
+
 }
 
 const Progress =  React.createClass({
@@ -43,11 +44,11 @@ const Progress =  React.createClass({
 	      	<RadioButtonGroup style={radioStyle} name="children" defaultSelected={localStorage.getItem('ChildIdforDefault')} onChange={(e, value) => this.handleChange(e, value)} >
               
             {this.props.children.map(function(item, i){
-              return <RadioButton labelStyle={{color:fullWhite, fontSize:20, fontFamily:"Chalky"}} key={i} value={item.id} label={item.name} />
+              return <RadioButton style={{width:75, marginRight:50}} labelStyle={{color:fullWhite, fontSize:20, fontFamily:"Chalky"}} key={i} value={item.id} label={item.name} />
             })}
           </RadioButtonGroup>
           <div style={{display:"flex", flexDirection:"row"}}>
-          	<Notifications value={this.state.value} />
+          	<Notifications  />
             <ChoresComp value={this.state.value} />
           </div>
        </div>
