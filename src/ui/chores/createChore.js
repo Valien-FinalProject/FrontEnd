@@ -54,12 +54,12 @@ export default React.createClass({
     console.log(endDayVal)
     e.preventDefault()
     if(Object.keys(this.state.id).length === 0){
-    createChore(this.state.description, this.state.endDate, this.state.name, this.state.startDate, this.state.num)
+    createChore(this.state.description, this.state.name, this.state.num)
    }
 
     for(var key in this.state.id){
     if(Object.keys(this.state.id).length > 0 && this.state.id[key] === true){
-      assignChore(key, this.state.description, this.state.endDate, this.state.name, this.state.startDate, this.state.num )
+      assignChore(key, this.state.description, this.state.name, this.state.num )
     }
     else if( Object.keys(this.state.id).length >0 && this.state.id[key] === false){
        console.log("No point including this")

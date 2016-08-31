@@ -529,8 +529,8 @@ export function handleValue(value){
 
 //chore creation
 
-export function createChore(description, endDate, name,  startDate, value ){
-	api.post('/parent/chore', {description:description, endDate:endDate, name:name, startDate:startDate, value:value})
+export function createChore(description, name,  value ){
+	api.post('/parent/chore', {description:description, name:name,  value:value})
 	.then(function(response){
 		console.log(response)
 		store.dispatch({
@@ -559,8 +559,8 @@ export function changeChoreFromPool(id){
 
 //chore assignment
 
-export function assignChore(id, description, endDate, name,  startDate, value){
-	api.post(`/parent/child/${id}/chore`, {description:description, endDate:endDate, name:name, startDate:startDate, value:value})
+export function assignChore(id, description,  name,   value){
+	api.post(`/parent/child/${id}/chore`, {description:description, name:name, value:value})
 	.then(function(response){
 		console.log("assignChore to Child", response)
 		store.dispatch({
