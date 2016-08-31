@@ -11,7 +11,7 @@ const Comp = React.createClass({
   render: function () {
     return (
     	<div style={{width:"50%", paddingLeft:"10%"}}>
-    		<h1> Chores completed this week</h1>
+    		<h1 style={{marginBottom:92}} > Chores completed this week</h1>
     		{this.props.complete.map(function(item){
     			return <Holder key={item.id} startDate={item.startDate} endDate={item.endDate} description={item.description} name={item.name} />
     		})}

@@ -14,7 +14,7 @@ const Notifications =  React.createClass({
          <h2 style={{textAlign:"center"}}>Rewards Cashed In</h2>
       	<ul>
       		{this.props.rewards.map(function(reward){
-      			return <li style={{fontSize:24}} key={reward.id}><p style={{width:200, display:"inline-block"}}>Reward: {reward.name}</p> <p style={{display:"inline-block", marginLeft:50}}>Points: {reward.points}</p></li>
+      			return <li style={{fontSize:24}} key={reward.id}><p style={{width:"66%", display:"inline-block"}}>Reward: {reward.name}</p> <p style={{display:"inline-block", marginLeft:50}}>Points: {reward.points}</p></li>
       		})}
 
       	</ul>

@@ -37,15 +37,12 @@ const parentLanding =  React.createClass({
   },
   componentWillMount:function(){
     getChildren()
-    console.log("childrenProps", this.props.children)
-    // getChildren()
-    // var x = Number(localStorage.getItem('ChildIdforDefault'))
+    var x = Number(localStorage.getItem('ChildIdforDefault'))
+    console.log(x)
 
-    // getParentCurrentChoresById(x)
-    // getParentCompleteChoresById(x)
-    // getParentPendingChoresById(x)
-    // console.log("hello", moment().date())
-    // console.log("moment", moment().month())
+    getParentCurrentChoresById(x)
+    getParentCompleteChoresById(x)
+    getParentPendingChoresById(x)
     
   },
   handleChange:function(e, value){
@@ -78,7 +75,7 @@ const parentLanding =  React.createClass({
         </div>
         <div style={radioStyle}>
           <span>Toggle Child:</span>
-          <RadioButtonGroup style={radioStyle} name="children" onChange={(e, value) => this.handleChange(e, value)}> 
+          <RadioButtonGroup style={radioStyle} defaultSelected={Number(localStorage.getItem("ChildIdforDefault"))} name="children" onChange={(e, value) => this.handleChange(e, value)}> 
           {this.props.children.map(function(item, i){
             return <RadioButton inputStyle={{borderColor:"white", color:"white"}} labelStyle={{color:"white", fontFamily:"Chalky", marginLeft:0}} key={i} value={item.id} label={(item.name).toUpperCase()}  />
           })}
