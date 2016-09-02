@@ -4,7 +4,7 @@ import Cookie from 'js-cookie'
 import {browserHistory} from 'react-router'
 import {saveState} from 'api/localstorage'
 
-
+console.log(Cookie.get())
 
 api.new('https://vast-fortress-99365.herokuapp.com')
 //eopt===email optin, popt=== phone optin
