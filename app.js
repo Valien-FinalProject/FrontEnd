@@ -8,6 +8,7 @@ module.exports = function (config) {
     port: 3000,
     host: 'localhost'
   }
+  var port = process.env.PORT || 8000;
 
   config = Object.assign(defaultConfig, config);
 
@@ -19,7 +20,9 @@ module.exports = function (config) {
     res.sendFile(path.resolve(config.root + '/index.html'));
   });
  
-  app.listen(process.env.PORT || 8000)
+  app.listen(port, function() {
+    console.log("App is running on port " + port);
+});
 
-  console.log((chalk.cyan('Server started at http://' + config.host + ':' + config.port)));
+  console.log((chalk.cyan('Server started at http://' + config.host + ':' + port)));
 }
