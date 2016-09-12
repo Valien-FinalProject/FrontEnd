@@ -12,7 +12,7 @@ module.exports = {
     filename: "bundle.js",
     sourceMapFilename: 'bundle.map'
   },
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   plugins: [
     // the index.html file is generated below
     HtmlWebpack,
