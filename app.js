@@ -18,7 +18,7 @@ module.exports = function (config) {
   app.get("*", function(req, res){
     res.sendFile(path.resolve(config.root + '/index.html'));
   });
-
+ 
   app.listen(process.env.PORT || 8000)
 
   console.log((chalk.cyan('Server started at http://' + config.host + ':' + config.port)));
