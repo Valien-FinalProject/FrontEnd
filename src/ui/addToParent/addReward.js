@@ -12,7 +12,7 @@ const style={
   color:"white",
   width:"50%",
   borderLeft:"1px solid white",
-  paddingLeft:"10%"
+  paddingLeft:"10% "
 }
 const inputStyle={
   fontSize:24

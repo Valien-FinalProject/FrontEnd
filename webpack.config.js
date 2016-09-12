@@ -16,7 +16,13 @@ module.exports = {
   plugins: [
     // the index.html file is generated below
     HtmlWebpack,
-    ExtractCSS
+    ExtractCSS,
+    new webpack.optimize.UglifyJsPlugin({
+    minimize: true,
+    compress: {
+      warnings: false
+    }
+  })
   ],
   resolve: {
     root: path.resolve('./src/')
